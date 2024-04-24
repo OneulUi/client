@@ -7,10 +7,12 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center">
         <Image
           src="https://cdn.pixabay.com/photo/2024/02/28/14/01/woman-8602128_1280.png"
+          layout="Fill"
           width={500}
           height={500}
-          alt="sun"
-          layout="responsive"
+          alt="girl"
+          priority
+          sizes="(max-width: 500px) 100vw, 500px"
         />
         <div className="absolute inset-x-0 bottom-20 flex justify-center">
           <Button text="시작하기" href="/signin" />
