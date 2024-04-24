@@ -21,9 +21,7 @@ export default function Survey() {
         <SurveyComponent />
         <SurveyComponent />
         <SurveyComponent />
-        <div className="absolute inset-x-0 bottom-20 flex justify-center">
-          <Button text="다음" href="/location" />
-        </div>
+        <Button text="다음" href="/location" />
       </section>
     </main>
   );
