@@ -1,6 +1,5 @@
 import Button from "@/components/button/Button";
-import SurveyComponent from "@/components/survey/SurveyComponent";
-
+import DaumPostcode from "react-daum-postcode";
 export default function Location() {
   return (
     <main className="flex flex-col w-full p-6 m-6">
