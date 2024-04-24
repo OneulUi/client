@@ -2,10 +2,11 @@
 import Button from "@/components/button/Button";
 import DaumPostcode from "react-daum-postcode";
 import { Address } from "react-daum-postcode";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 export default function Location() {
   const [showDaumPostcode, setShowDaumPostcode] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
+
   const handleInputFocus = () => {
     setShowDaumPostcode(true);
   };
@@ -16,7 +17,10 @@ export default function Location() {
 
   const completeHandler = (data: Address) => {
     console.log(data);
-    setAddress(data.address);
+
+    if (address === "") {
+      setAddress(data.address);
+    }
   };
 
   const reloadHandler = () => {
@@ -40,6 +44,7 @@ export default function Location() {
           onFocus={handleInputFocus}
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          readOnly={!address}
         />
         {showDaumPostcode && (
           <DaumPostcode onComplete={completeHandler} theme={themeObj} />
