@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import RecoilRootWrapper from "@/components/recoil/RecoilWrapper";
+import Providers from "@/components/react-query/Providers";
+import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +15,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html>
+      <body className="">
+        <div className="flex flex-col items-center bg-[#403e3e]">
+          <div className="max-w-[500px] min-h-screen w-full h-full bg-white">
+            <Providers>
+              <RecoilRootWrapper>
+                <main className="flex flex-col justify-center items-center">
+                  {children}
+                </main>
+              </RecoilRootWrapper>
+            </Providers>
+            <Footer />
+          </div>
+        </div>
+      </body>
     </html>
   );
 }
