@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body>
+      <body className="">
         <div className="flex flex-col items-center bg-[#403e3e]">
           <div className="max-w-[500px] min-h-screen w-full h-full bg-white">
             <Providers>
