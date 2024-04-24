@@ -16,7 +16,7 @@ export default function Home() {
 
         <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-600"></div>
         <div className="absolute inset-x-0 bottom-20 flex justify-center">
-          <Button text="시작하기" href="/signin" />
+          <Button text="시작하기" href="/survey" />
         </div>
       </div>
     </main>
