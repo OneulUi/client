@@ -3,6 +3,8 @@ import Button from "@/components/button/Button";
 import DaumPostcode from "react-daum-postcode";
 import { Address } from "react-daum-postcode";
 import { useState, useRef, useEffect } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import { IconContext } from "react-icons";
 export default function Location() {
   const [showDaumPostcode, setShowDaumPostcode] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
@@ -42,25 +44,29 @@ export default function Location() {
         </div>
       </section>
       <section className="flex flex-col mt-4">
-        <input
-          className="border-2 p-4 w-full rounded-2xl"
-          placeholder="사는 지역 검색하기"
-          onFocus={handleInputFocus}
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          readOnly={!address}
-        />
+        <div className="flex items-center relative">
+          <input
+            className="border-2 p-4 w-full rounded-2xl"
+            placeholder="사는 지역 검색하기"
+            onFocus={handleInputFocus}
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            readOnly={!address}
+          />
+          {address !== "" && (
+            <IoCloseSharp
+              className="absolute z-10 right-0 mr-6 cursor-pointer hover:text-red-400"
+              onClick={() => {
+                setAddress(""), reloadHandler();
+              }}
+            />
+          )}
+        </div>
+
         {showDaumPostcode && (
           <DaumPostcode onComplete={completeHandler} theme={themeObj} />
         )}
-        {address === "" && (
-          <button
-            className="text-right p-2 mt-2 font-extralight"
-            onClick={reloadHandler}
-          >
-            주소 다시 검색하기
-          </button>
-        )}
+
         <Button text="오늘의 시작하기" href="/location" />
       </section>
     </main>
