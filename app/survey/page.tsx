@@ -15,12 +15,12 @@ export default function Survey() {
         </div>
       </section>
       <section className="flex flex-col justify-center items-center mt-4">
-        <SurveyComponent />
-        <SurveyComponent />
-        <SurveyComponent />
-        <SurveyComponent />
-        <SurveyComponent />
-        <SurveyComponent />
+        <SurveyComponent text="평소에 추위를 많이 타는 편이다." />
+        <SurveyComponent text="다른 사람과 비슷한 정도로 추위를 탄다." />
+        <SurveyComponent text="추위를 별로 타지 않는 편이다." />
+        <SurveyComponent text="더위를 타는 편이다." />
+        <SurveyComponent text="다른 사람보다 더위를 많이 타는 편이다." />
+        <SurveyComponent text="평소에 더위를 많이 타는편이다." />
         <Button text="다음" href="/location" />
       </section>
     </main>
