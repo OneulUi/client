@@ -1,4 +1,4 @@
-export default function Text() {
+export default function WriteOotd() {
   return (
     <>
       <section className="flex border-2 rounded-2xl p-4 w-5/6 m-4 h-[300px] bg-gray-200">

@@ -1,4 +1,5 @@
 import Header from "@/components/ootd/Header";
+import UserComponent from "@/components/ootd/UserComponent";
 import Weather from "@/components/ootd/Weather";
 import { GoPencil } from "react-icons/go";
 import { IoIosSearch } from "react-icons/io";
@@ -13,6 +14,7 @@ export default function Ootd() {
         </span>
       </section>
       <Weather />
+      <UserComponent />
     </main>
   );
 }
