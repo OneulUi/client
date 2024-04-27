@@ -1,21 +1,30 @@
-name: GitHub Actions Vercel Preview Deployment
-env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+name: git push into another repo to deploy to vercel
+
 on:
   push:
-    branches-ignore:
-      - dev
+    branches: [dev]
+
 jobs:
-  Deploy-Preview:
+  build:
     runs-on: ubuntu-latest
+    container: pandoc/latex
     steps:
-      - uses: actions/checkout@v3
-      - name: Install Vercel CLI
-        run: npm install --global vercel@canary
-      - name: Pull Vercel Environment Information
-        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Build Project Artifacts
-        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy Project Artifacts to Vercel
-        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+      - uses: actions/checkout@v2
+      - name: Install mustache (to update the date)
+        run: apk add ruby && gem install mustache
+      - name: creates output
+        run: sh ./build.sh
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: "output"
+          destination-github-username: ${{ secrets.GIT_NAME }}
+          destination-repository-name: ${{ secrets.E_MAIL }}
+          user-email: ${{ secrets.OFFICIAL_ACCOUNT_EMAIL }}
+          commit-message: ${{ github.event.commits[0].message }}
+          target-branch: dev
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
