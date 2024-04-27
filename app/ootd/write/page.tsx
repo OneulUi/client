@@ -3,6 +3,7 @@ import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Weather from "@/components/ootd/Weather";
 import Header from "@/components/ootd/Header";
+import Text from "@/components/ootd/Text";
 export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState("");
 
@@ -39,6 +40,7 @@ export default function OotdWrite() {
       </section>
 
       <Weather />
+      <Text />
     </main>
   );
 }
