@@ -2,6 +2,7 @@
 import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Weather from "@/components/ootd/Weather";
+import Header from "@/components/ootd/Header";
 export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState("");
 
@@ -22,13 +23,22 @@ export default function OotdWrite() {
   };
 
   return (
-    <>
-      {uploadImgUrl && (
-        <Image src={uploadImgUrl} alt="user-image" width={400} height={400} />
-      )}
-      <input type="file" accept="image/*" onChange={onchangeImageUpload} />
+    <main className="w-full flex flex-col items-center">
+      <Header />
+      <section className="m-4 flex flex-col">
+        {uploadImgUrl && (
+          <Image
+            className="rounded-3xl mb-4"
+            src={uploadImgUrl}
+            alt="user-image"
+            width={400}
+            height={700}
+          />
+        )}
+        <input type="file" accept="image/*" onChange={onchangeImageUpload} />
+      </section>
 
       <Weather />
-    </>
+    </main>
   );
 }
