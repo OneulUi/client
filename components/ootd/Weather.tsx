@@ -1,3 +1,4 @@
+import { IoIosArrowForward } from "react-icons/io";
 export default function Weather() {
   return (
     <section className="flex border-2 rounded-2xl p-4 w-5/6 m-4 justify-between items-center relative">
@@ -17,8 +18,10 @@ export default function Weather() {
           <span className="mt-2">날씨</span>
         </div>
       </div>
-      <button className="absolute bottom-0 right-0 mb-2 mr-2 text-sm">
+
+      <button className="flex absolute bottom-0 right-0 mb-2 mr-2 text-sm hover:text-red-400">
         수정하기
+        <IoIosArrowForward className="m-[3px]" />
       </button>
     </section>
   );
