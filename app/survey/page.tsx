@@ -16,9 +16,9 @@ export default function Survey() {
       </section>
       <section className="flex flex-col justify-center items-center mt-4">
         {questions.map((question, idx) => (
-          <SurveyComponent key={idx} text={question} />
+          <SurveyComponent key={idx} text={question.question} />
         ))}
-        <Button text="다음" href="/location" />
+        {/* <Button text="다음" href="/location" /> */}
       </section>
     </main>
   );

@@ -1,6 +1,6 @@
 import Header from "@/components/ootd/Header";
 import UserComponent from "@/components/ootd/UserComponent";
-import Weather from "@/components/ootd/Weather";
+import Weather2 from "@/components/ootd/Weather2";
 import { GoPencil } from "react-icons/go";
 import { IoIosSearch } from "react-icons/io";
 export default function Ootd() {
@@ -13,7 +13,7 @@ export default function Ootd() {
           <IoIosSearch size={24} />
         </span>
       </section>
-      <Weather />
+      <Weather2 />
       <UserComponent />
     </main>
   );
