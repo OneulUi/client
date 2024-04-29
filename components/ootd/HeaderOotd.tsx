@@ -1,5 +1,6 @@
 import { GoPencil } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
+import Link from "next/link";
 export default function OotdHeader() {
   return (
     <section className="flex p-6 w-full justify-between items-center relative">
@@ -12,11 +13,12 @@ export default function OotdHeader() {
         <span className="text-[40px] mr-4 font-bold">
           70<span className="text-sm absolute top-4">%</span>
         </span>
+
         <IoIosArrowDown className="text-[20px] cursor-pointer" />
       </div>
-      <div className="flex">
+      <Link href="/ootd/search">
         <GoPencil className="mr-4" size={22} />
-      </div>
+      </Link>
     </section>
   );
 }
