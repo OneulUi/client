@@ -38,7 +38,9 @@ export default function OotdWrite() {
         )}
         <input type="file" accept="image/*" onChange={onchangeImageUpload} />
       </section>
+
       <WriteOotd />
+
       <Weather2 />
     </main>
   );
