@@ -1,7 +1,6 @@
 "use client";
 import { useMutation } from "@tanstack/react-query";
 import { Axios } from "../../api/axios";
-import { SurveyType } from "@/api/type";
 export default function usePostUsersLoc() {
   const mutation = useMutation({
     mutationFn: async (data: string) => {

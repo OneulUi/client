@@ -30,6 +30,10 @@ export default function Location() {
 
   const handleButtonClick = async () => {
     await handleSubmit(address);
+
+    if (address === "") {
+      alert("지역을 등록해주세요!");
+    }
   };
 
   const reloadHandler = () => {
@@ -73,7 +77,7 @@ export default function Location() {
           <DaumPostcode onComplete={completeHandler} theme={themeObj} />
         )}
         <div onClick={handleButtonClick}>
-          <Button text="오늘의 시작하기" href="/survey" />
+          <Button text="오늘의 시작하기" href="/ootd" />
         </div>
       </section>
     </main>
