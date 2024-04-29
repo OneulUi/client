@@ -2,7 +2,7 @@
 import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import Weather2 from "@/components/ootd/Weather2";
-import Header from "@/components/ootd/Header";
+import Header from "@/components/ootd/write/WriteHeader";
 import WriteOotd from "@/components/ootd/WriteOotd";
 export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState("");
