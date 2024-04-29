@@ -5,5 +5,5 @@ export interface ButtonText {
 
 export interface SurveyType {
   text: string;
-  key: number;
+  temp: number;
 }
