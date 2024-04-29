@@ -1,6 +1,8 @@
 import Button from "@/components/button/Button";
 import SurveyComponent from "@/components/survey/SurveyComponent";
 import { questions } from "../../components/dummy-data/dummy";
+import Link from "next/link";
+
 export default function Survey() {
   return (
     <main className="flex flex-col w-full p-6 m-6">
@@ -16,9 +18,12 @@ export default function Survey() {
       </section>
       <section className="flex flex-col justify-center items-center mt-4">
         {questions.map((question, idx) => (
-          <SurveyComponent key={idx} text={question} />
+          <SurveyComponent
+            key={idx}
+            temp={question.temp}
+            text={question.question}
+          />
         ))}
-        <Button text="다음" href="/location" />
       </section>
     </main>
   );

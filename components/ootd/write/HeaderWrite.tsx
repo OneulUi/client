@@ -6,7 +6,7 @@ export default function Header() {
       <Link href="/ootd">
         <IoIosArrowBack />
       </Link>
-      <span className="text-gray-600 text-[20px] font-thin">ootd 작성하기</span>
+      <span className="text-gray-600 text-[20px] font-thin">OOTD 업로드</span>
       <span>Post</span>
     </section>
   );

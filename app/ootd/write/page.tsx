@@ -1,8 +1,8 @@
 "use client";
 import { ChangeEvent, useState } from "react";
 import Image from "next/image";
-import Weather from "@/components/ootd/Weather";
-import Header from "@/components/ootd/Header";
+import Weather2 from "@/components/ootd/Weather2";
+import Header from "@/components/ootd/write/HeaderWrite";
 import WriteOotd from "@/components/ootd/WriteOotd";
 export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState("");
@@ -39,8 +39,9 @@ export default function OotdWrite() {
         <input type="file" accept="image/*" onChange={onchangeImageUpload} />
       </section>
 
-      <Weather />
       <WriteOotd />
+
+      <Weather2 />
     </main>
   );
 }

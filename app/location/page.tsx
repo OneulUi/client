@@ -4,11 +4,13 @@ import DaumPostcode from "react-daum-postcode";
 import { Address } from "react-daum-postcode";
 import { useState, useRef, useEffect } from "react";
 import { IoCloseSharp } from "react-icons/io5";
-import { IconContext } from "react-icons";
+import usePostUsersLoc from "@/components/hook/usePostUsersLoc";
+
 export default function Location() {
   const [showDaumPostcode, setShowDaumPostcode] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const { handleSubmit } = usePostUsersLoc();
 
   const handleInputFocus = () => {
     setShowDaumPostcode(true);
@@ -24,6 +26,10 @@ export default function Location() {
     if (address === "") {
       setAddress(data.address);
     }
+  };
+
+  const handleButtonClick = async () => {
+    await handleSubmit(address);
   };
 
   const reloadHandler = () => {
@@ -66,8 +72,9 @@ export default function Location() {
         {showDaumPostcode && (
           <DaumPostcode onComplete={completeHandler} theme={themeObj} />
         )}
-
-        <Button text="오늘의 시작하기" href="/location" />
+        <div onClick={handleButtonClick}>
+          <Button text="오늘의 시작하기" href="/ootd" value={address} />
+        </div>
       </section>
     </main>
   );
