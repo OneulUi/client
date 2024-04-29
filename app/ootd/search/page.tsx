@@ -1,8 +1,10 @@
-import WriteHeader from "../../../components/ootd/write/HeaderWrite";
+import HeaderSearch from "../../../components/ootd/search/HeaderSearch";
+import Input from "@/components/input/Input";
 export default function OotdSearch() {
   return (
-    <main>
-      <WriteHeader />
+    <main className="w-full">
+      <HeaderSearch />
+      <Input />
     </main>
   );
 }

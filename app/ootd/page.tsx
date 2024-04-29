@@ -10,7 +10,6 @@ export default function Ootd() {
       <HeaderOotd />
       <Input />
       <section className="bg-blue-200 w-full flex flex-col items-center">
-        {" "}
         <UserComponent />
         <UserComponent />
         <UserComponent />
