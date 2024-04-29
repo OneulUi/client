@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Button from "@/components/button/Button";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import Header from "@/components/ootd/write/WriteHeader";
+import Header from "@/components/ootd/write/HeaderWrite";
 
 export default function Home() {
   const clientId = "YOUR_GOOGLE_CLIENT_ID";

@@ -1,17 +1,20 @@
-import Header from "@/components/ootd/write/WriteHeader";
+import Header from "@/components/ootd/write/HeaderWrite";
 import UserComponent from "@/components/ootd/UserComponent";
 import Weather2 from "@/components/ootd/Weather2";
 
 import Input from "@/components/input/Input";
-import OotdHeader from "@/components/ootd/OotdHeader";
+import HeaderOotd from "@/components/ootd/HeaderOotd";
 export default function Ootd() {
   return (
     <main className="w-full flex flex-col items-center">
-      <OotdHeader />
+      <HeaderOotd />
       <Input />
-      <UserComponent />
-      <UserComponent />
-      <UserComponent />
+      <section className="bg-blue-200 w-full flex flex-col items-center">
+        {" "}
+        <UserComponent />
+        <UserComponent />
+        <UserComponent />
+      </section>
     </main>
   );
 }

@@ -2,7 +2,7 @@ export default function UserComponent() {
   return (
     <>
       {" "}
-      <section className="flex flex-col justify-between border-2 rounded-2xl p-4 w-5/6 m-4 h-[400px] bg-gray-200">
+      <section className="flex flex-col justify-between border-2 rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-200">
         <div className="flex justify-between items-center h-1/5">
           <span className="font-thin">UserName</span>
           <div className="flex items-center relative">
