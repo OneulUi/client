@@ -2,7 +2,7 @@ import Link from "@/node_modules/next/link";
 
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 border-t-2 py-4 w-[500px]">
+    <footer className="fixed bottom-0 border-t-2 py-4 w-[500px] h-[10vh]">
       <div className="flex w-full items-center justify-around">
         <Link href="/main" className="flex flex-col items-center">
           <img
