@@ -2,7 +2,7 @@ import Link from "@/node_modules/next/link";
 
 export default function Main() {
   return (
-    <div className="w-full h-[90vh] bg-blue-300 pt-8 px-10 flex flex-col justify-between">
+    <div className="w-full h-[90vh] bg-gradient-to-tr from-blue-500 to-yellow-200 pt-8 px-10 flex flex-col justify-between">
       {/* 설정 */}
       <div>
         <div className="flex justify-between">
