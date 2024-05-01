@@ -7,7 +7,7 @@ import WriteOotd from "@/components/ootd/WriteOotd";
 import defaultImage from "../../../assets/default.png";
 import SatisfyOotd from "@/components/ootd/write/SatisfyOotd";
 export default function OotdWrite() {
-  const [uploadImgUrl, setUploadImgUrl] = useState("");
+  const [uploadImgUrl, setUploadImgUrl] = useState<string>("");
   const [defaultImg, setDefaultImg] = useState(defaultImage);
 
   const onchangeImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -15,6 +15,7 @@ export default function OotdWrite() {
     if (files && files.length > 0) {
       const uploadFile = files[0];
       const reader = new FileReader();
+      //이 부분 이미지 업로드
       reader.readAsDataURL(uploadFile);
       reader.onloadend = () => {
         if (reader.result) {
@@ -29,7 +30,7 @@ export default function OotdWrite() {
   return (
     <main className="w-full flex flex-col items-center">
       <Header />
-      <section className="m-4 flex flex-col">
+      <section className="m-4 flex flex-col items-center">
         {uploadImgUrl ? (
           <Image
             className="rounded-3xl mb-4"
@@ -49,7 +50,17 @@ export default function OotdWrite() {
         )}
 
         {defaultImage ? (
-          <input type="file" accept="image/*" onChange={onchangeImageUpload} />
+          <label className="block">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={onchangeImageUpload}
+              className="hidden"
+            />
+            <div className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer inline-block">
+              Upload Image
+            </div>
+          </label>
         ) : null}
       </section>
 

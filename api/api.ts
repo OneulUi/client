@@ -1,5 +1,5 @@
 import { Axios } from "./axios";
 
 export const getSurvey = async () => {
-  return await Axios.get("/member/survey");
+  return await Axios.get("survey/options");
 };
