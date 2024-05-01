@@ -16,7 +16,7 @@ export default function OotdHeader() {
 
         <IoIosArrowDown className="text-[20px] cursor-pointer" />
       </div>
-      <Link href="/ootd/search">
+      <Link href="/ootd/write">
         <GoPencil className="mr-4" size={22} />
       </Link>
     </section>

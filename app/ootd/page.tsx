@@ -1,6 +1,6 @@
 import Header from "@/components/ootd/write/HeaderWrite";
 import UserComponent from "@/components/ootd/UserComponent";
-import Weather2 from "@/components/ootd/Weather2";
+import Weather2 from "@/components/ootd/write/Weather2";
 
 import Input from "@/components/input/Input";
 import HeaderOotd from "@/components/ootd/HeaderOotd";

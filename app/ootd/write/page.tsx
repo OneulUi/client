@@ -1,11 +1,14 @@
 "use client";
 import { ChangeEvent, useState } from "react";
 import Image from "next/image";
-import Weather2 from "@/components/ootd/Weather2";
+import Weather2 from "@/components/ootd/write/Weather2";
 import Header from "@/components/ootd/write/HeaderWrite";
 import WriteOotd from "@/components/ootd/WriteOotd";
+import defaultImage from "../../../assets/default.png";
+import SatisfyOotd from "@/components/ootd/write/SatisfyOotd";
 export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState("");
+  const [defaultImg, setDefaultImg] = useState(defaultImage);
 
   const onchangeImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -27,7 +30,7 @@ export default function OotdWrite() {
     <main className="w-full flex flex-col items-center">
       <Header />
       <section className="m-4 flex flex-col">
-        {uploadImgUrl && (
+        {uploadImgUrl ? (
           <Image
             className="rounded-3xl mb-4"
             src={uploadImgUrl}
@@ -35,13 +38,24 @@ export default function OotdWrite() {
             width={400}
             height={700}
           />
+        ) : (
+          <Image
+            className="rounded-3xl mb-4"
+            src={defaultImage}
+            alt="default-image"
+            width={400}
+            height={700}
+          />
         )}
-        <input type="file" accept="image/*" onChange={onchangeImageUpload} />
+
+        {defaultImage ? (
+          <input type="file" accept="image/*" onChange={onchangeImageUpload} />
+        ) : null}
       </section>
 
       <WriteOotd />
-
       <Weather2 />
+      <SatisfyOotd />
     </main>
   );
 }
