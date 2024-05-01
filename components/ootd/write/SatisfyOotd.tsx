@@ -2,7 +2,7 @@ import { CiFaceSmile } from "react-icons/ci";
 import { CiFaceFrown } from "react-icons/ci";
 export default function SatisfyOotd() {
   return (
-    <section className="w-full relative flex items-center justify-center">
+    <section className="w-full relative flex items-center justify-center mb-8">
       {" "}
       <h1 className="absolute top-8 left-12 font-bold">
         이 날 OOTD는 만족했나요?

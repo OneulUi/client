@@ -6,7 +6,7 @@ export default function WriteOotd() {
       </h1>
       <textarea
         placeholder="글 작성하기"
-        className="mt-8 font-thin border-2 rounded-2xl p-4 w-5/6 h-[160px] bg-gray-200 "
+        className="mt-12 font-thin border-2 rounded-2xl p-4 w-5/6 h-[160px] bg-gray-200 "
       />
     </section>
   );
