@@ -1,16 +1,19 @@
-import React from "react";
-import Uploady from "@rpldy/uploady";
+export const uploadImageToServer = async (imageFile: File) => {
+  const formData = new FormData();
+  formData.append("image", imageFile);
 
-const filterBySize = (file: any) => {
-  //filter out images larger than 5MB
-  return file.size <= 5242880;
+  try {
+    const response = await fetch("http://your-server-url/upload", {
+      method: "POST",
+      body: formData,
+    });
+
+    if (response.ok) {
+      console.log("성공!");
+    } else {
+      console.error("실패:", response.statusText);
+    }
+  } catch (error) {
+    console.error("에러", error);
+  }
 };
-
-const App = () => (
-  <Uploady
-    destination={{ url: "my-server.com/upload" }}
-    fileFilter={filterBySize}
-    accept="image/*"
-    method="POST"
-  ></Uploady>
-);
