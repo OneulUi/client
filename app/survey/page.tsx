@@ -1,9 +1,13 @@
+"use client";
 import Button from "@/components/button/Button";
 import SurveyComponent from "@/components/survey/SurveyComponent";
 import { questions } from "../../components/dummy-data/dummy";
+import useGetSurvey from "@/components/hook/useGetSurvey";
 import Link from "next/link";
-
+import { getSurvey } from "@/api/api";
 export default function Survey() {
+  const survey = useGetSurvey();
+  console.log(survey);
   return (
     <main className="flex flex-col w-full p-6 m-6">
       <section className="flex flex-col mb-4">
