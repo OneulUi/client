@@ -11,7 +11,7 @@ export default function OotdWrite() {
   const [defaultImg, setDefaultImg] = useState(defaultImage);
 
   const onchangeImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
-    const { files } = e.target;
+    const files = e.target.files;
     if (files && files.length > 0) {
       const uploadFile = files[0];
       const reader = new FileReader();
