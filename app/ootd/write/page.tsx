@@ -10,6 +10,26 @@ export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState<string>("");
   const [defaultImg, setDefaultImg] = useState(defaultImage);
 
+  const uploadImageToServer = async (imageFile: File) => {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    try {
+      const response = await fetch("http://your-server-url/upload", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        console.log("Image uploaded successfully!");
+      } else {
+        console.error("Failed to upload image:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+
   const onchangeImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length > 0) {
@@ -20,6 +40,7 @@ export default function OotdWrite() {
       reader.onloadend = () => {
         if (reader.result) {
           setUploadImgUrl(reader.result.toString());
+          uploadImageToServer(uploadFile);
         }
       };
     } else {
