@@ -7,7 +7,7 @@ import Link from "next/link";
 import { getSurvey } from "@/api/api";
 export default function Survey() {
   const survey = useGetSurvey();
-  console.log(survey);
+  console.log(survey.data);
   return (
     <main className="flex flex-col w-full p-6 m-6">
       <section className="flex flex-col mb-4">

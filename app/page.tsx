@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-
+import bgImg from "../assets/bg.png";
 export default function Home() {
   return (
     <main className="w-full flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center">
+      <Image src={bgImg} width={500} height={500} alt="bgColor" />
+      <div className="flex flex-col items-center justify-center ">
         <Image
           src="https://cdn.pixabay.com/photo/2024/02/28/14/01/woman-8602128_1280.png"
           className="absolute top-24 w-[290px] h-[45vh] border-2 border-white rounded-2xl rotate-12"
