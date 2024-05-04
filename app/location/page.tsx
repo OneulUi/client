@@ -24,7 +24,11 @@ export default function Location() {
     console.log(data);
 
     if (address === "") {
-      setAddress(data.address);
+      const query = data.query;
+      const parts = query.split(" ");
+      const filteredPart = parts.slice(0, 2).join(" ");
+      setAddress(query);
+      console.log(filteredPart);
     }
   };
 

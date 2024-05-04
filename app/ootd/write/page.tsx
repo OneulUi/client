@@ -10,7 +10,7 @@ import { uploadImageToServer } from "@/components/hook/uplodImg";
 import { MdUploadFile } from "react-icons/md";
 export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState<string>("");
-  const [defaultImg, setDefaultImg] = useState(defaultImage);
+  // const [defaultImg, setDefaultImg] = useState(defaultImage);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
 
   const onchangeImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +32,7 @@ export default function OotdWrite() {
     }
   };
 
+  console.log(uploadFile);
   return (
     <main className="w-full flex flex-col items-center">
       <Header uploadFile={uploadFile} />

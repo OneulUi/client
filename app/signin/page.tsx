@@ -8,10 +8,13 @@ export default function SignIn() {
   const router = useRouter();
 
   const handleButtonClick = async () => {
-    const response = await axios.get(
-      "http://ec2-3-36-88-73.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google"
+    // const response = await axios.get(
+    //   "http://3.36.88.73:8080/oauth2/authorization/google?http://localhost:3000/signin/login/redirect"
+    // );
+    // console.log(response);
+    router.push(
+      "http://3.36.88.73:8080/oauth2/authorization/google?http://localhost:3000/login/redirect"
     );
-    console.log(response);
   };
 
   const handleRedirect = () => {

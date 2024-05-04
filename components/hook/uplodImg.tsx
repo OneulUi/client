@@ -1,19 +1,16 @@
+import axios from "axios";
 export const uploadImageToServer = async (imageFile: File) => {
   const formData = new FormData();
   formData.append("image", imageFile);
-
+  //formData.append(json형식으로 string 넣기)
   try {
-    const response = await fetch("http://your-server-url/upload", {
-      method: "POST",
-      body: formData,
+    const response = await axios.post("/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
-
-    if (response.ok) {
-      console.log("성공!");
-    } else {
-      console.error("실패:", response.statusText);
-    }
+    console.log("success");
   } catch (error) {
-    console.error("에러", error);
+    console.log(error);
   }
 };

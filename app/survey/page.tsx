@@ -5,16 +5,29 @@ import { questions } from "../../components/dummy-data/dummy";
 import useGetSurvey from "@/components/hook/useGetSurvey";
 import Link from "next/link";
 import { getSurvey } from "@/api/api";
+import useGetWeather from "@/components/hook/useGetWeather";
+import { GetSurveyParams } from "@/api/api";
 export default function Survey() {
-  const survey = useGetSurvey();
-  console.log(survey);
+  //survey는 원래 {isLoading,error,data}
+  const survey = useGetSurvey({
+    address: "서울특별시/송파구",
+    baseDate: "20240504",
+  });
+  const surveyParams: GetSurveyParams = {
+    address: "서울특별시/송파구",
+    baseDate: "20240504",
+  };
+
+  const survey2 = useGetWeather({ params: surveyParams });
+
+  console.log(survey2.data);
   return (
     <main className="flex flex-col w-full p-6 m-6">
       <section className="flex flex-col mb-4">
         <h2 className="text-center mb-4">사전 질문</h2>
         <span className="mb-4">1/2</span>
         <h1 className="text-2xl font-bold mb-2">
-          평소에 얼마나 추위를 타시나요?
+          평소에 얼마나 추위를 타시나요?x
         </h1>
         <div className="font-light mb-4">
           해당 정보는 추후 추천 정보에 반영됩니다.
