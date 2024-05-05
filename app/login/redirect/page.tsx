@@ -5,18 +5,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 export default function Redirect() {
   const params = useSearchParams();
-  const accessToken = params.get("accessToken");
-  const loginId = params.get("loginId");
+  const accessToken = JSON.stringify(params.get("accessToken"));
+  const loginId = JSON.stringify(params.get("loginId"));
   const router = useRouter();
-  // useEffect(() => {
-  //   router.push("/");
-  // }, [router]);
+  useEffect(() => {
+    localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("loginId", loginId);
+    router.push("/");
+  }, [router, accessToken, loginId]);
 
-  localStorage.setItem("accessToken", JSON.stringify(accessToken));
-  localStorage.setItem("loginId", JSON.stringify(loginId));
-  return (
-    <div>
-      1.{accessToken} 2.{loginId}
-    </div>
-  );
+  return <div>Loading...</div>;
 }
