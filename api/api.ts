@@ -11,14 +11,19 @@ export interface GetSurveyParams {
   baseDate: string;
   address: string;
 }
-
+// export const getWeatherCurrent = async ({
+//   params,
+// }: {
+//   params: GetSurveyParams;
+// })
 export const getWeatherCurrent = async ({
   params,
 }: {
   params: GetSurveyParams;
 }) => {
   //baseDate = params.baseData
-  const { baseDate, address } = params;
+  const baseDate = params;
+  const address = params;
   return await Axios.get("weather/current", {
     params: { baseDate, address },
   });
