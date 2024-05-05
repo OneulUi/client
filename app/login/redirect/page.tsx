@@ -1,4 +1,5 @@
 "use client";
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Axios } from "@/api/axios";
 import { useEffect } from "react";
@@ -14,5 +15,5 @@ export default function Redirect() {
     router.push("/survey");
   }, [router, accessToken, loginId]);
 
-  return <div>Loading...</div>;
+  return <Suspense>Loading...</Suspense>;
 }

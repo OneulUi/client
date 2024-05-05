@@ -22,13 +22,6 @@ export default function SignIn() {
     );
   };
 
-  // useEffect(() => {
-  //   const accessToken = localStorage.getItem("accessToken");
-  //   if (accessToken) {
-  //     router.push("/main");
-  //   }
-  // }, []);
-
   return (
     <main className="">
       <div className="flex flex-col items-center justify-center overflow-hidden">

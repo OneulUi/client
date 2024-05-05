@@ -35,9 +35,10 @@ export const getSurvey = async () => {
   if (!accessToken) {
     throw new Error("Token이 존재하지 않습니다.");
   }
-  return await Axios.get("/member/survey", {
+
+  return await Axios.get("/survey/options", {
     headers: {
-      Authorization: `${accessToken}`,
+      Authorization: accessToken,
     },
   });
 };
