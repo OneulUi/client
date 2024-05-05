@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 import { uploadImageToServer } from "@/components/hook/uplodImg";

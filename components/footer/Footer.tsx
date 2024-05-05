@@ -3,7 +3,7 @@
 import Link from "@/node_modules/next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import image from "../../assets/sun.png";
+import image from "@/assets/sun.png";
 
 export default function Footer() {
   const pathName = usePathname();

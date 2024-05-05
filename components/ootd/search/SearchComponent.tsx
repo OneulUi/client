@@ -1,5 +1,5 @@
 import Image from "next/image";
-import sun from "../../../assets/sun.png";
+import sun from "@/assets/sun.png";
 
 export default function SearchComponent() {
   return (
