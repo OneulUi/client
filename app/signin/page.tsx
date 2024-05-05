@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { Axios } from "@/api/axios";
 import axios from "axios";
 export default function SignIn() {
@@ -36,12 +37,14 @@ export default function SignIn() {
 
         <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-600"></div>
         <div className="absolute inset-x-0 bottom-20 flex justify-center">
-          <button
-            onClick={handleButtonClick}
-            className="bottom-40 bg-gray-900 text-white w-[45vh] h-[7vh] flex items-center justify-center rounded-3xl transition-transform hover:scale-95"
-          >
-            구글 로그인
-          </button>
+          <Suspense>
+            <button
+              onClick={handleButtonClick}
+              className="bottom-40 bg-gray-900 text-white w-[45vh] h-[7vh] flex items-center justify-center rounded-3xl transition-transform hover:scale-95"
+            >
+              구글 로그인
+            </button>
+          </Suspense>
         </div>
       </div>
     </main>
