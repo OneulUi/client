@@ -1,3 +1,4 @@
+"use client";
 import { CiFaceSmile } from "react-icons/ci";
 import { CiFaceFrown } from "react-icons/ci";
 export default function SatisfyOotd() {

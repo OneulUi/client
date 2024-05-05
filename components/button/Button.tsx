@@ -1,3 +1,4 @@
+"use client";
 import { ButtonText } from "@/api/type";
 import Link from "next/link";
 

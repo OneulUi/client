@@ -1,5 +1,5 @@
 import Button from "@/components/button/Button";
-import sun from "../../../../assets/sun.png";
+import sun from "@/assets/sun.png";
 import Image from "next/image";
 export default function PostPage() {
   return (
