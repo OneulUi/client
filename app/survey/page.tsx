@@ -20,9 +20,9 @@ export default function Survey() {
   //   baseDate: "20240504",
   // };
   // const weather2 = useGetWeather({ params: surveyParams });
-  // const survey = useGetSurvey();
+  const survey = useGetSurvey();
 
-  // console.log(survey);
+  console.log(survey);
   return (
     <main className="flex flex-col w-full p-6 m-6">
       <section className="flex flex-col mb-4">

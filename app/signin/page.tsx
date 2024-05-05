@@ -22,23 +22,12 @@ export default function SignIn() {
     );
   };
 
-  // const handleRedirect = () => {
-  //   const url = new URL(window.location.href);
-  //   const accessToken = url.searchParams.get("access_token");
-  //   console.log(url);
+  // useEffect(() => {
+  //   const accessToken = localStorage.getItem("accessToken");
   //   if (accessToken) {
-  //     localStorage.setItem("ACCESS_TOKEN", accessToken);
-  //     router.push("/");
+  //     router.push("/main");
   //   }
-  // };
-
-  useEffect(() => {
-    // handleRedirect();
-    // console.log(params.get("accessToken,loginId"));
-    // console.log(params.has);
-    // console.log(router);
-    // console.log(window.location.href);
-  }, []);
+  // }, []);
 
   return (
     <main className="">
