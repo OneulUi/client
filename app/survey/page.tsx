@@ -9,20 +9,25 @@ import { GetSurveyParams } from "@/api/api";
 import useGetWeather2 from "@/components/hook/useGetWeather2";
 import useGetSurvey from "@/components/hook/useGetSurvey";
 import { getSurvey } from "@/api/api";
+import { useEffect } from "react";
 export default function Survey() {
   //survey는 원래 {isLoading,error,data}
   // const weather = useGetWeather2({
-  //   address: "서울특별시/송파구",
-  //   baseDate: "20240504",
+  //   address: "서울특별시 송파구",
+  //   baseDate: "20240505",
   // });
   // const surveyParams: GetSurveyParams = {
-  //   address: "서울특별시/송파구",
-  //   baseDate: "20240504",
+  //   address: "서울특별시 강서구",
+  //   baseDate: "20240505",
   // };
   // const weather2 = useGetWeather({ params: surveyParams });
-  // const survey = useGetSurvey();
+  const survey = getSurvey();
+  // console.log(weather2);
 
-  // console.log(survey);
+  useEffect(() => {
+    getSurvey();
+  }, []);
+  console.log(survey);
   return (
     <main className="flex flex-col w-full p-6 m-6">
       <section className="flex flex-col mb-4">

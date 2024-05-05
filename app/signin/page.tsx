@@ -22,24 +22,6 @@ export default function SignIn() {
     );
   };
 
-  // const handleRedirect = () => {
-  //   const url = new URL(window.location.href);
-  //   const accessToken = url.searchParams.get("access_token");
-  //   console.log(url);
-  //   if (accessToken) {
-  //     localStorage.setItem("ACCESS_TOKEN", accessToken);
-  //     router.push("/");
-  //   }
-  // };
-
-  useEffect(() => {
-    // handleRedirect();
-    // console.log(params.get("accessToken,loginId"));
-    // console.log(params.has);
-    // console.log(router);
-    // console.log(window.location.href);
-  }, []);
-
   return (
     <main className="">
       <div className="flex flex-col items-center justify-center overflow-hidden">
