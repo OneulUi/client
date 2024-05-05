@@ -1,6 +1,6 @@
 import { Axios } from "./axios";
 
-export const getSurvey = async (params: GetSurveyParams) => {
+export const getWeather = async (params: GetSurveyParams) => {
   const { baseDate, address } = params;
   return await Axios.get("weather/current", {
     params: { baseDate: baseDate, address: address },
@@ -27,4 +27,8 @@ export const getWeatherCurrent = async ({
   return await Axios.get("weather/current", {
     params: { baseDate, address },
   });
+};
+
+export const getSurvey = async () => {
+  return await Axios.get("/member/survey");
 };

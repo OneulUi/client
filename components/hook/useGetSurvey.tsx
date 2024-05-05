@@ -1,12 +1,10 @@
-"use client";
-import { GetSurveyParams, getSurvey } from "@/api/api";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-
-export default function useGetSurvey(params: GetSurveyParams) {
-  const { isLoading, isError, data } = useQuery({
+import { useQuery } from "@tanstack/react-query";
+import { getSurvey } from "@/api/api";
+export default function useGetSurvey() {
+  const { isLoading, data } = useQuery({
     queryKey: ["survey"],
-    queryFn: () => getSurvey(params),
+    queryFn: getSurvey,
   });
 
-  return { isLoading, isError, data };
+  return { isLoading, data };
 }

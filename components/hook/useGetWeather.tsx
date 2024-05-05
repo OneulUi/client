@@ -1,10 +1,10 @@
 "use client";
-import { GetSurveyParams, getSurvey, getWeatherCurrent } from "@/api/api";
+import { GetSurveyParams, getWeatherCurrent } from "@/api/api";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 export default function useGetWeather({ params }: { params: GetSurveyParams }) {
   const { isLoading, isError, data } = useQuery({
-    queryKey: ["survey"],
+    queryKey: ["weather"],
     queryFn: () => getWeatherCurrent({ params }),
   });
 
