@@ -2,33 +2,42 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Axios } from "@/api/axios";
 import axios from "axios";
 export default function SignIn() {
   const router = useRouter();
+  const params = useSearchParams();
 
   const handleButtonClick = async () => {
     // const response = await axios.get(
     //   "http://3.36.88.73:8080/oauth2/authorization/google?http://localhost:3000/signin/login/redirect"
     // );
+    // const response = await axios.get(
+    //   "http://ec2-3-36-88-73.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?http://localhost:3000/login/redirect"
+    // );
     // console.log(response);
     router.push(
-      "http://3.36.88.73:8080/oauth2/authorization/google?http://localhost:3000/login/redirect"
+      "http://ec2-3-36-88-73.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/login/redirect"
     );
   };
 
-  const handleRedirect = () => {
-    const url = new URL(window.location.href);
-    const accessToken = url.searchParams.get("access_token");
-    console.log(url);
-    if (accessToken) {
-      localStorage.setItem("ACCESS_TOKEN", accessToken);
-      router.push("/");
-    }
-  };
+  // const handleRedirect = () => {
+  //   const url = new URL(window.location.href);
+  //   const accessToken = url.searchParams.get("access_token");
+  //   console.log(url);
+  //   if (accessToken) {
+  //     localStorage.setItem("ACCESS_TOKEN", accessToken);
+  //     router.push("/");
+  //   }
+  // };
 
   useEffect(() => {
-    handleRedirect();
+    // handleRedirect();
+    // console.log(params.get("accessToken,loginId"));
+    // console.log(params.has);
+    // console.log(router);
+    // console.log(window.location.href);
   }, []);
 
   return (
