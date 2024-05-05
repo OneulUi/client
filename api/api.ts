@@ -30,5 +30,14 @@ export const getWeatherCurrent = async ({
 };
 
 export const getSurvey = async () => {
-  return await Axios.get("/member/survey");
+  const accessToken = localStorage.getItem("accessToken");
+  console.log(accessToken);
+  if (!accessToken) {
+    throw new Error("Token이 존재하지 않습니다.");
+  }
+  return await Axios.get("/member/survey", {
+    headers: {
+      Authorization: `${accessToken}`,
+    },
+  });
 };

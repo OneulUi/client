@@ -11,7 +11,7 @@ export default function Redirect() {
   useEffect(() => {
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("loginId", loginId);
-    router.push("/");
+    router.push("/survey");
   }, [router, accessToken, loginId]);
 
   return <div>Loading...</div>;
