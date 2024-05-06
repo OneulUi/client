@@ -8,6 +8,7 @@ export default function SurveyComponent({ surveyId, options }: SurveyIdType) {
   const router = useRouter();
   const handleClick = () => {
     handleSubmit({ surveyId, options });
+    console.log(surveyId);
   };
   // const data = useGetSurvey();
   // const select = data.data?.data.data
@@ -16,9 +17,10 @@ export default function SurveyComponent({ surveyId, options }: SurveyIdType) {
     <div
       key={surveyId}
       onClick={() => {
-        router.push("/location"), handleClick();
+        router.push("/location");
+        handleClick();
       }}
-      className="border-2 p-6 m-4 text-center rounded-2xl w-5/6 transition-transform hover:bg-gray-200 hover:scale-105"
+      className="cursor-pointer border-2 p-6 m-4 text-center rounded-2xl w-5/6 transition-transform hover:bg-gray-200 hover:scale-105"
     >
       {options}
     </div>
