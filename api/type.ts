@@ -9,3 +9,8 @@ export interface SurveyType {
   temp: number;
   text: string;
 }
+
+export interface SurveyIdType {
+  surveyId: number;
+  options: string;
+}

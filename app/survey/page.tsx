@@ -10,6 +10,8 @@ import useGetWeather2 from "@/components/hook/useGetWeather2";
 import useGetSurvey from "@/components/hook/useGetSurvey";
 import { getSurvey } from "@/api/api";
 import { useEffect } from "react";
+import usePostUsersPre from "@/components/hook/usePostUsersPre";
+import { SurveyIdType } from "@/api/type";
 export default function Survey() {
   //survey는 원래 {isLoading,error,data}
   // const weather = useGetWeather2({
@@ -21,13 +23,14 @@ export default function Survey() {
   //   baseDate: "20240505",
   // };
   // const weather2 = useGetWeather({ params: surveyParams });
-  const survey = getSurvey();
+  const survey = useGetSurvey();
+  const surveyData = survey.data?.data.data;
   // console.log(weather2);
+  const select = usePostUsersPre();
+  console.log(surveyData);
 
-  useEffect(() => {
-    getSurvey();
-  }, []);
-  console.log(survey);
+  useEffect(() => {}, []);
+  // console.log(survey.data?.data.data);
   return (
     <main className="flex flex-col w-full p-6 m-6">
       <section className="flex flex-col mb-4">
@@ -41,13 +44,14 @@ export default function Survey() {
         </div>
       </section>
       <section className="flex flex-col justify-center items-center mt-4">
-        {questions.map((question, idx) => (
-          <SurveyComponent
-            key={idx}
-            temp={question.temp}
-            text={question.question}
-          />
-        ))}
+        {surveyData &&
+          surveyData.map((item: SurveyIdType) => (
+            <SurveyComponent
+              key={item.surveyId}
+              surveyId={item.surveyId}
+              options={item.options}
+            />
+          ))}
       </section>
     </main>
   );
