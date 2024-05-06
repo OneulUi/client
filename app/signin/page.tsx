@@ -2,12 +2,12 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+
+import { Suspense } from "react";
 import { Axios } from "@/api/axios";
 import axios from "axios";
 export default function SignIn() {
   const router = useRouter();
-  const params = useSearchParams();
 
   const handleButtonClick = async () => {
     // const response = await axios.get(

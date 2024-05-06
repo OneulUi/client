@@ -8,11 +8,11 @@ function Search() {
   const router = useRouter();
   const params = useSearchParams();
   const accessToken = params.get("accessToken");
-  const loginId = JSON.stringify(params.get("loginId"));
+  const loginId = params.get("loginId");
   useEffect(() => {
-    if (typeof window !== undefined) {
+    if (typeof window !== "undefined") {
       localStorage.setItem("accessToken", `Bearer ${accessToken}`);
-      localStorage.setItem("loginId", loginId);
+      localStorage.setItem("loginId", `loginId`);
     }
 
     router.push("/survey");
