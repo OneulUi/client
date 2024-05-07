@@ -1,7 +1,7 @@
 "use client";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { Axios } from "../../api/axios";
-import { SurveyIdType, SurveyType } from "@/api/type";
+import { SurveyIdType } from "@/api/type";
 export default function usePostUsersPre() {
   const mutation = useMutation({
     mutationFn: async (data: SurveyIdType) => {

@@ -6,13 +6,13 @@ import Header from "@/components/ootd/write/HeaderWrite";
 import WriteOotd from "@/components/ootd/WriteOotd";
 import defaultImage from "../../../assets/default.png";
 import SatisfyOotd from "@/components/ootd/write/SatisfyOotd";
-import { uploadImageToServer } from "@/components/hook/uplodImg";
+// import { uploadImageToServer } from "@/components/hook/uplodImg";
 import { MdUploadFile } from "react-icons/md";
 export default function OotdWrite() {
   const [uploadImgUrl, setUploadImgUrl] = useState<string>("");
   // const [defaultImg, setDefaultImg] = useState(defaultImage);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
-
+  const [review, setReview] = useState<string>("");
   const onchangeImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files.length > 0) {
@@ -31,11 +31,14 @@ export default function OotdWrite() {
       console.log("파일이 선택되지 않았습니다.");
     }
   };
-
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setReview(e.target.value);
+    console.log(review);
+  };
   console.log(uploadFile);
   return (
     <main className="w-full flex flex-col items-center">
-      <Header uploadFile={uploadFile} />
+      <Header text={review} uploadFile={uploadFile} />
       <section className="m-4 flex flex-col items-center">
         {uploadImgUrl ? (
           <Image
@@ -70,7 +73,17 @@ export default function OotdWrite() {
         ) : null}
       </section>
 
-      <WriteOotd />
+      <section className="w-full flex flex-col items-center relative">
+        <h1 className="absolute left-12 mb-4 font-semibold">
+          OOTD 후기를 작성해주세요
+        </h1>
+        <textarea
+          value={review}
+          onChange={handleChange}
+          placeholder="글 작성하기"
+          className="mt-12 font-thin border-2 rounded-2xl p-4 w-5/6 h-[160px] bg-gray-200 "
+        />
+      </section>
       <Weather2 />
       <SatisfyOotd />
     </main>

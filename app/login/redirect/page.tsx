@@ -12,7 +12,7 @@ function Search() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("accessToken", `Bearer ${accessToken}`);
-      localStorage.setItem("loginId", `loginId`);
+      localStorage.setItem("loginId", `${loginId}`);
     }
 
     router.push("/survey");

@@ -29,6 +29,7 @@ export default function Location() {
       const filteredPart = parts.slice(0, 2).join(" ");
       setAddress(query);
       console.log(filteredPart);
+      localStorage.setItem("weather", filteredPart);
     }
   };
 
