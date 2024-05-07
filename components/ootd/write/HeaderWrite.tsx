@@ -11,8 +11,6 @@ export default function Header({ uploadFile, text }: HeaderProps) {
   const uploadImageToServer = async (imageFile: File, ootdData: any) => {
     const formData = new FormData();
     formData.append("image", imageFile);
-    //formData.append(json형식으로 string 넣기)
-    // formData.append("text", text);
     formData.append("ootd", JSON.stringify(ootdData));
     const accessToken = localStorage.getItem("accessToken");
     return await axios.post("/ootds", formData, {
@@ -26,7 +24,7 @@ export default function Header({ uploadFile, text }: HeaderProps) {
   const handleClick = () => {
     if (uploadFile) {
       const ootdData = {
-        ootdId: 0,
+        // ootdId: 0,
         review: "string",
         temperature: "string",
         humidity: "string",
