@@ -1,6 +1,35 @@
+"use client";
+import axios from "axios";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { useEffect } from "react";
+
+// async function test() {
+//   const response = await axios.get("http://3.36.88.73:8080/weather/current", {
+//     params: {
+//       baseDate: "20240504",
+//       address: "서울특별시 강서구",
+//     },
+//   });
+//   console.log(response.data);
+// }
 
 export default function TodayWeather() {
+  //   useEffect(() => {
+  //     async function hello() {
+  //       const response = await axios.get(
+  //         "http://3.36.88.73:8080/weather/hourly",
+  //         {
+  //           params: {
+  //             baseDate: "20240507",
+  //             address: "서울특별시 강서구",
+  //           },
+  //         }
+  //       );
+  //       console.log(response.data);
+  //     }
+
+  //     hello();
+  //   }, []);
   return (
     <div className="flex flex-col">
       <div className="flex items-center mb-2">
