@@ -3,14 +3,24 @@ import { MdLocationSearching } from "react-icons/md";
 import Card from "./Card";
 import { useRef, useState } from "react";
 import { MouseEvent } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { chunkArray, getHourWeather } from "./api";
 
 export default function WeatherByHour() {
-  const scrollRef = useRef<HTMLDivElement>(null); // 타입 추가: HTMLDivElement
-  const [isDrag, setIsDrag] = useState<boolean>(false); // 타입 추가: boolean
-  const [startX, setStartX] = useState<number | undefined>(undefined); // 타입 추가: number 또는 undefined
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDrag, setIsDrag] = useState<boolean>(false);
+  const [startX, setStartX] = useState<number | undefined>(undefined);
+  const { data, isPending } = useQuery({
+    queryKey: ["hourly"],
+    queryFn: getHourWeather,
+  });
+
+  const newData = chunkArray(data.data, 4);
+  console.log(newData);
+
+  if (isPending) return <div>Loading...</div>;
 
   const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    // 타입 추가
     e.preventDefault();
     setIsDrag(true);
     setStartX(e.pageX + (scrollRef.current ? scrollRef.current.scrollLeft : 0)); // scrollRef.current가 null이 될 수 있으므로 체크
@@ -64,7 +74,7 @@ export default function WeatherByHour() {
       {/* 슬라이더 구현 + api에서 시간별 날씨 정보 가져오기*/}
       <div>
         <div
-          className="flex justify-center items-center gap-2 overflow-x-scroll scrollbar-hide pl-7"
+          className="flex items-center gap-2 overflow-x-scroll scrollbar-hide"
           ref={scrollRef}
           //@ts-ignore
           onMouseDown={onDragStart}
@@ -73,8 +83,14 @@ export default function WeatherByHour() {
           onMouseUp={onDragEnd}
           onMouseLeave={onDragEnd}
         >
-          {[...Array(12)].map((item, index) => (
-            <Card key={index} />
+          {newData.map((item, index) => (
+            <Card
+              key={index}
+              //@ts-ignore
+              time={item[0].fcstTime}
+              value={item[0].fcstValue}
+              weather={item[1].fcstValue}
+            />
           ))}
         </div>
       </div>
