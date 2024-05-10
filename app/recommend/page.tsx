@@ -18,9 +18,9 @@ export default function Recommend() {
           <span className="font-bold">필수 옷차림</span>
           <Link
             href="/recommend/getup"
-            className="bg-black text-white rounded-full py-1 px-2 text-xs"
+            className="text-gray rounded-full py-1 px-2 text-xs"
           >
-            다른 날씨 옷차림 보기 &rarr;
+            필수 옷차림 더보기 &rarr;
           </Link>
         </div>
         <div className="border-solid border-2 border-gray-400 h-[200px] mt-2">

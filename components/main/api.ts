@@ -40,3 +40,9 @@ export function chunkArray<T extends MyObject>(
   }
   return chunkedArray;
 }
+
+export function today() {
+  let today = new Date();
+  let tomorrow = new Date(today.setDate(today.getDate() + 1));
+  let twodays = new Date(today.setDate(today.getDate() + 2));
+}
