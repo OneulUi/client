@@ -5,7 +5,7 @@ export async function getCurrentWeather() {
     "http://13.124.159.141:8080/weather/current",
     {
       params: {
-        baseDate: "20240510",
+        baseDate: "20240513",
         address: "서울특별시 종로구",
       },
     }
@@ -18,7 +18,7 @@ export async function getHourWeather() {
     "http://13.124.159.141:8080/weather/hourly",
     {
       params: {
-        baseDate: "20240510",
+        baseDate: "20240513",
         address: "서울특별시 종로구",
       },
     }

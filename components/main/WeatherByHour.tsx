@@ -5,20 +5,27 @@ import { useRef, useState } from "react";
 import { MouseEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { chunkArray, getHourWeather } from "./api";
+import { Address } from "react-daum-postcode";
+import DaumPostcode from "react-daum-postcode";
+import getCurrentTime from "@/utils/getCurrentTime";
+import downHour from "@/utils/downHour";
 
 export default function WeatherByHour() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDrag, setIsDrag] = useState<boolean>(false);
   const [startX, setStartX] = useState<number | undefined>(undefined);
-  const { data, isPending } = useQuery({
+  const [showDaumPostcode, setShowDaumPostcode] = useState<boolean>(false);
+  const [address, setAddress] = useState<string>("");
+  const { data, isPending, isError } = useQuery({
     queryKey: ["hourly"],
     queryFn: getHourWeather,
   });
 
+  if (isPending) return <div>Loading...</div>;
+  if (isError) return <div>Error</div>;
+
   const newData = chunkArray(data.data, 4);
   console.log(newData);
-
-  if (isPending) return <div>Loading...</div>;
 
   const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
@@ -62,16 +69,46 @@ export default function WeatherByHour() {
   const delay = 1;
   const onThrottleDragMove = throttle(onDragMove, delay);
 
+  // 주소 변경
+
+  const completeHandler = (data: Address) => {
+    console.log(data);
+
+    const query = data.query;
+    const parts = query.split(" ");
+    const filteredPart = parts.slice(0, 2).join(" ");
+    setAddress(filteredPart);
+    console.log(filteredPart);
+    localStorage.setItem("weather", filteredPart);
+
+    setShowDaumPostcode(false);
+  };
+  const handleClick = () => {
+    setShowDaumPostcode(true);
+  };
+  const handleClose = () => {
+    setShowDaumPostcode(false);
+  };
+
   return (
     <div className="bg-white p-3 rounded-2xl mb-10 ">
       <div className="flex justify-between items-center mb-10">
         <div className="font-semibold text-xl">Today</div>
-        <div className="flex items-center">
-          서울특별시 강동구 성내1동
+        <div className="flex items-center" onClick={handleClick}>
+          {address ? address : localStorage.getItem("weather")}
           <MdLocationSearching className="ml-1" />
         </div>
       </div>
-      {/* 슬라이더 구현 + api에서 시간별 날씨 정보 가져오기*/}
+      {showDaumPostcode && (
+        <div
+          onClick={handleClose}
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50"
+        >
+          <div className="bg-white p-4 rounded-lg">
+            <DaumPostcode onComplete={completeHandler} />
+          </div>
+        </div>
+      )}
       <div>
         <div
           className="flex items-center gap-2 overflow-x-scroll scrollbar-hide"
@@ -83,15 +120,17 @@ export default function WeatherByHour() {
           onMouseUp={onDragEnd}
           onMouseLeave={onDragEnd}
         >
-          {newData.map((item, index) => (
-            <Card
-              key={index}
-              //@ts-ignore
-              time={item[0].fcstTime}
-              value={item[0].fcstValue}
-              weather={item[1].fcstValue}
-            />
-          ))}
+          {newData
+            .filter((e) => e[0].fcstTime >= downHour(getCurrentTime()))
+            .map((item, index) => (
+              <Card
+                key={index}
+                //@ts-ignore
+                time={item[0].fcstTime}
+                value={item[0].fcstValue}
+                weather={item[1].fcstValue}
+              />
+            ))}
         </div>
       </div>
     </div>

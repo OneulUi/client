@@ -9,6 +9,7 @@ export default function Card({ time, value, weather }) {
       <div>
         {time.slice(0, 2)}:{time.slice(2, 4)}
       </div>
+      {/* weather에 따라 ICON 보여주기 */}
       <IoSunnyOutline className="w-10 h-10" />
       <div>{value}°C</div>
     </div>
