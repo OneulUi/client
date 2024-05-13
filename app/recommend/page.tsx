@@ -1,18 +1,35 @@
 "use client";
+import { getCurrentWeather } from "@/components/main/api";
 import First from "@/components/recommend/small/First";
 import { getDate } from "@/utils/getDate";
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
+import { wordingRecommend } from "./../../utils/wordingByWeather";
 
 export default function Recommend() {
-  console.log(localStorage.getItem("weather"));
-  navigator.geolocation.getCurrentPosition((position) => {
-    const latitude = position.coords.latitude; // 위도
-    const longitude = position.coords.longitude; // 경도
-
-    // 가져온 위도와 경도를 로컬 스토리지에 저장
-    localStorage.setItem("latitude", "" + latitude);
-    localStorage.setItem("longitude", "" + longitude);
+  const { data, isPending, isError, refetch } = useQuery({
+    queryKey: ["current"],
+    queryFn: () => getCurrentWeather(getDate().split(".").join("")),
   });
+
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  console.log(data);
+  // console.log(localStorage.getItem("weather"));
+  // navigator.geolocation.getCurrentPosition((position) => {
+  //   const latitude = position.coords.latitude; // 위도
+  //   const longitude = position.coords.longitude; // 경도
+
+  //   // 가져온 위도와 경도를 로컬 스토리지에 저장
+  //   localStorage.setItem("latitude", "" + latitude);
+  //   localStorage.setItem("longitude", "" + longitude);
+  // });
 
   return (
     <div className="w-full">
@@ -20,9 +37,9 @@ export default function Recommend() {
         <div>{getDate()}</div>
         <div className="flex justify-between items-center w-full">
           <div className="flex flex-col">
-            <span>맑은 날씨</span>
+            <span>{wordingRecommend(data.data[2].fcstValue)}</span>
           </div>
-          <div>8°C</div>
+          <div>{data.data[2].fcstValue}°C</div>
         </div>
       </div>
       <div className="mt-6 mx-4">

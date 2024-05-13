@@ -3,20 +3,48 @@ import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { getCurrentWeather } from "./api";
 import { useQuery } from "@tanstack/react-query";
 import { wording } from "@/utils/wordingByWeather";
+import { ChangeEvent, useEffect, useState } from "react";
+import { getDate, getTomorrow, getTwoDays } from "@/utils/getDate";
 
-export default function TodayWeather() {
-  const { data, isPending, isError } = useQuery({
-    queryKey: ["current"],
-    queryFn: getCurrentWeather,
-  });
+interface WeatherInfo {
+  category: string;
+  convertCategory: string;
+  convertFcstValue: string;
+  fcstDate: string;
+  fcstTime: string;
+  fcstValue: number;
+}
+interface ICurrentProps {
+  data: Array<WeatherInfo>;
+  message: string;
+  status: string;
+}
+interface ChildProps {
+  data: ICurrentProps;
+  date: string;
+  onSetDate: (newDate: string) => void;
+}
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
+export default function TodayWeather({ data, date, onSetDate }: ChildProps) {
+  console.log(data, date); // 데이터 잘 가져옴
+  const handleChange = () => {
+    const newDate = "112";
+    onSetDate(newDate);
+  };
+  // const { data, isPending, isError, refetch } = useQuery({
+  //   queryKey: ["current"],
+  //   queryFn: () => getCurrentWeather(date),
+  // });
 
-  if (isError) {
-    return <div>Error</div>;
-  }
+  // const [date, setDate] = useState(getDate().split(".").join(""));
+  // const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   setDate(e.target.value.split(".").join(""));
+  //   console.log(date);
+  // };
+
+  // useEffect(() => {
+  //   refetch();
+  // }, [date, refetch]);
 
   //console.log(data);
 
@@ -25,16 +53,19 @@ export default function TodayWeather() {
       <div>
         <div className="flex items-center mb-2">
           {/* 드롭다운 css 추가 필요 + api에서 해당 일자에 맞는 날씨 정보 가져오기*/}
-          <form action="">
-            <select
-              name="date"
-              className="border-none bg-inherit checked:text-blue-100"
-            >
-              <option value="today">2024.04.25</option>
-              <option value="tomorrow">2024.04.26</option>
-              <option value="twodays">2024.04.27</option>
-            </select>
-          </form>
+          <select
+            onChange={handleChange}
+            name="date"
+            className="border-none bg-inherit checked:text-blue-100"
+          >
+            <option value={getDate()}>{getDate()}</option>
+            <option value={getTomorrow(getDate())}>
+              {getTomorrow(getDate())}
+            </option>
+            <option value={getTwoDays(getDate())}>
+              {getTwoDays(getDate())}
+            </option>
+          </select>
         </div>
 
         <div className="flex justify-between items-center">

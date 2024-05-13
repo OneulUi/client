@@ -1,7 +1,7 @@
 "use client";
 import { MdLocationSearching } from "react-icons/md";
 import Card from "./Card";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MouseEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { chunkArray, getHourWeather } from "./api";
@@ -9,6 +9,7 @@ import { Address } from "react-daum-postcode";
 import DaumPostcode from "react-daum-postcode";
 import getCurrentTime from "@/utils/getCurrentTime";
 import downHour from "@/utils/downHour";
+import { getFullRegion } from "@/utils/region";
 
 export default function WeatherByHour() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -16,16 +17,20 @@ export default function WeatherByHour() {
   const [startX, setStartX] = useState<number | undefined>(undefined);
   const [showDaumPostcode, setShowDaumPostcode] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
-  const { data, isPending, isError } = useQuery({
+  const { data, isPending, isError, refetch } = useQuery({
     queryKey: ["hourly"],
     queryFn: getHourWeather,
   });
+
+  useEffect(() => {
+    refetch();
+  }, [address, refetch]);
 
   if (isPending) return <div>Loading...</div>;
   if (isError) return <div>Error</div>;
 
   const newData = chunkArray(data.data, 4);
-  console.log(newData);
+  // console.log(newData);
 
   const onDragStart = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.preventDefault();
@@ -77,15 +82,21 @@ export default function WeatherByHour() {
     const query = data.query;
     const parts = query.split(" ");
     const filteredPart = parts.slice(0, 2).join(" ");
-    setAddress(filteredPart);
-    console.log(filteredPart);
-    localStorage.setItem("weather", filteredPart);
-
+    const temp1 = getFullRegion(data.sido);
+    const temp2 = data.sigungu;
+    const ans = temp1 + " " + temp2;
+    // setAddress(filteredPart);
+    // console.log(filteredPart);
+    setAddress(ans);
+    console.log(ans);
+    localStorage.setItem("weather", ans);
     setShowDaumPostcode(false);
   };
+
   const handleClick = () => {
     setShowDaumPostcode(true);
   };
+
   const handleClose = () => {
     setShowDaumPostcode(false);
   };
@@ -94,7 +105,10 @@ export default function WeatherByHour() {
     <div className="bg-white p-3 rounded-2xl mb-10 ">
       <div className="flex justify-between items-center mb-10">
         <div className="font-semibold text-xl">Today</div>
-        <div className="flex items-center" onClick={handleClick}>
+        <div
+          className="flex items-center hover:cursor-pointer"
+          onClick={handleClick}
+        >
           {address ? address : localStorage.getItem("weather")}
           <MdLocationSearching className="ml-1" />
         </div>
@@ -126,6 +140,7 @@ export default function WeatherByHour() {
               <Card
                 key={index}
                 //@ts-ignore
+                index={index}
                 time={item[0].fcstTime}
                 value={item[0].fcstValue}
                 weather={item[1].fcstValue}
