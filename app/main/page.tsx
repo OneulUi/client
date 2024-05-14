@@ -22,6 +22,9 @@ export default function Main() {
       },
     ],
   });
+  const handleDate = (newDate: string) => {
+    setDate(newDate);
+  };
 
   const currentData = results[0].data;
   const hourlyData = results[1].data;
@@ -31,7 +34,11 @@ export default function Main() {
   return (
     // 배경 색 온도에 맞게 구현 필요
     <div className="w-full h-[90vh] bg-gradient-to-tr from-blue-500 to-yellow-200 pt-8 px-10 flex flex-col justify-between">
-      <div>{currentData && <TodayWeather d={currentData} dat={date} />}</div>
+      <div>
+        {currentData && (
+          <TodayWeather data={currentData} date={date} onSetDate={handleDate} />
+        )}
+      </div>
       <WeatherByHour />
       <ReactQueryDevtools initialIsOpen={false} />
     </div>
