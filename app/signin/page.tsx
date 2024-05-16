@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import bgImg from "@/assets/bg.png";
+import oneului from "@/assets/oneului.png";
 import { Suspense } from "react";
 import { Axios } from "@/api/axios";
 import axios from "axios";
@@ -22,28 +23,50 @@ export default function SignIn() {
     );
   };
 
+  const handleMain = () => {
+    router.push("/main");
+  };
   return (
-    <main className="">
-      <div className="flex flex-col items-center justify-center overflow-hidden">
-        <Image
-          src="https://cdn.pixabay.com/photo/2024/02/28/14/01/woman-8602128_1280.png"
-          className="w-[100vw] h-[100vh] "
-          width={500}
-          height={500}
-          alt="girl"
-          priority
-        />
-
-        <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-600"></div>
-        <div className="absolute inset-x-0 bottom-20 flex justify-center">
-          <button
-            onClick={handleButtonClick}
-            className="bottom-40 bg-gray-900 text-white w-[45vh] h-[7vh] flex items-center justify-center rounded-3xl transition-transform hover:scale-95"
-          >
-            구글 로그인
-          </button>
-        </div>
+    <div className="w-full flex flex-col items-center justify-center overflow-hidden">
+      <Image
+        src={bgImg}
+        width={500}
+        height={undefined}
+        className="absolute h-[100vh] top-0"
+        alt="bgColor"
+      />
+      <Image
+        src={oneului}
+        width={500}
+        height={undefined}
+        className="absolute top-52 w-[240px] h-[170px] "
+        alt="bgColor"
+      />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+        <span className="text-white text-[20px] font-thin">
+          오늘 날씨에 맞는 옷차림을 보고 싶은
+        </span>
+        <br />
+        <span className="text-white text-[20px] font-thin">
+          사람들을 위한 서비스, 오늘의
+        </span>
       </div>
-    </main>
+
+      {/* <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-600"></div> */}
+      <div className="flex-col absolute inset-x-0 bottom-20 flex  items-center space-y-4">
+        <button
+          onClick={handleMain}
+          className=" text-[17px] font-middle bottom-40 bg-[#6595FF] text-white w-[45vh] h-[7vh] flex items-center justify-center rounded-[50px] transition-transform hover:scale-95"
+        >
+          바로 시작하기
+        </button>
+        <button
+          onClick={handleButtonClick}
+          className=" text-[17px] font-middle bottom-40 bg-[#ccc] text-black w-[45vh] h-[7vh] flex items-center justify-center rounded-[50px] transition-transform hover:scale-95"
+        >
+          구글 로그인
+        </button>
+      </div>
+    </div>
   );
 }
