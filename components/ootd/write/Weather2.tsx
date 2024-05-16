@@ -9,17 +9,27 @@ export default function Weather2() {
       </h1>
       <div className="flex w-5/6 mt-20">
         <div className="border-2 flex flex-col items-center p-3 w-full rounded-2xl mr-0.5">
-          <span className="text-xl font-thin mb-2">온도</span>
-          <span className="text-[40px] font-bold">20</span>
+          <label className="text-xl font-thin mb-2" htmlFor="temperature">
+            온도
+          </label>
+          <input
+            id="temperature"
+            type="text"
+            className="text-[40px] font-bold text-center w-full bg-transparent border-none focus:outline-none"
+            placeholder="20"
+          />
         </div>
         <div className="border-2 flex flex-col items-center p-3 w-full rounded-2xl ml-0.5">
-          <span className="text-xl font-thin mb-2">습도</span>
-          <span className="text-[40px] font-bold">20</span>
+          <label className="text-xl font-thin mb-2" htmlFor="humidity">
+            습도
+          </label>
+          <input
+            id="humidity"
+            type="text"
+            className="text-[40px] font-bold text-center w-full bg-transparent border-none focus:outline-none"
+            placeholder="100"
+          />
         </div>
-        {/* <button className="flex absolute bottom-0 right-0 mb-2 mr-2 text-sm hover:text-red-400">
-        수정하기
-        <IoIosArrowForward className="m-[3px]" />
-      </button> */}
       </div>
     </section>
   );
