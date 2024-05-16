@@ -2,13 +2,18 @@
 import { useState } from "react";
 import { CiFaceSmile } from "react-icons/ci";
 import { CiFaceFrown } from "react-icons/ci";
-export default function SatisfyOotd() {
+import { useEffect } from "react";
+export default function SatisfyOotd({ satis }: { satis: string }) {
   const [satisfaction, setSatisfaction] = useState("Y");
 
   const handleClick = (value: string) => {
     setSatisfaction(value);
     console.log(value);
   };
+  useEffect(() => {
+    setSatisfaction(satis);
+  }, [satis]);
+
   return (
     <section className="w-full relative flex items-center justify-center mb-[130px]">
       {" "}

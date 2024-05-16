@@ -9,6 +9,9 @@ import SatisfyOotd from "@/components/ootd/write/SatisfyOotd";
 // import { uploadImageToServer } from "@/components/hook/uplodImg";
 import { MdUploadFile } from "react-icons/md";
 export default function OotdWrite() {
+  const [temperature, setTemperature] = useState(0);
+  const [humidity, setHumidity] = useState(0);
+  const [satisfaction, setSatisfaction] = useState("Y");
   const [uploadImgUrl, setUploadImgUrl] = useState<string>("");
   // const [defaultImg, setDefaultImg] = useState(defaultImage);
   const [uploadFile, setUploadFile] = useState<File | null>(null);
@@ -84,8 +87,8 @@ export default function OotdWrite() {
           className="mt-12 font-thin border-2 rounded-2xl p-4 w-5/6 h-[160px] bg-gray-200 "
         />
       </section>
-      <Weather2 />
-      <SatisfyOotd />
+      <Weather2 temperature={temperature} humidity={humidity} />
+      <SatisfyOotd satis={satisfaction} />
     </main>
   );
 }
