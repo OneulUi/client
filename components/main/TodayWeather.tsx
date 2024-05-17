@@ -22,14 +22,12 @@ interface ICurrentProps {
 interface ChildProps {
   data: ICurrentProps;
   date: string;
-  onSetDate: (newDate: string) => void;
 }
 
-export default function TodayWeather({ data, date, onSetDate }: ChildProps) {
+export default function TodayWeather({ data, date }: ChildProps) {
   console.log(data, date); // 데이터 잘 가져옴
   const handleChange = () => {
-    const newDate = "112";
-    onSetDate(newDate);
+    const newDate = "20240514";
   };
   // const { data, isPending, isError, refetch } = useQuery({
   //   queryKey: ["current"],

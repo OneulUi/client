@@ -6,8 +6,8 @@ export default function Card({ time, value, weather, index }) {
     <div
       className={
         index === 0
-          ? "bg-blue-400 p-3 rounded-xl text-white"
-          : "bg-blue-200 p-3 rounded-xl text-white"
+          ? "bg-blue-500 p-3 rounded-xl text-white flex flex-col justify-center items-center"
+          : "bg-blue-100 p-3 rounded-xl text-gray-400 flex flex-col justify-center items-center"
       }
     >
       <div>

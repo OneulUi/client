@@ -11,24 +11,42 @@ import getCurrentTime from "@/utils/getCurrentTime";
 import downHour from "@/utils/downHour";
 import { getFullRegion } from "@/utils/region";
 
-export default function WeatherByHour() {
+interface WeatherInfo {
+  category: string;
+  fcstDate: string;
+  fcstTime: string;
+  fcstValue: string;
+  convertCategory: string;
+  convertFcstValue: string;
+}
+interface HourlyInfo {
+  data: Array<WeatherInfo>;
+  message: string;
+  status: string;
+}
+
+interface ChildProps {
+  data: HourlyInfo;
+  isPending: boolean;
+}
+
+export default function WeatherByHour({ data, isPending }: ChildProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDrag, setIsDrag] = useState<boolean>(false);
   const [startX, setStartX] = useState<number | undefined>(undefined);
   const [showDaumPostcode, setShowDaumPostcode] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
-  const { data, isPending, isError, refetch } = useQuery({
-    queryKey: ["hourly"],
-    queryFn: getHourWeather,
-  });
+  // const { data, isPending, isError, refetch } = useQuery({
+  //   queryKey: ["hourly"],
+  //   queryFn: getHourWeather,
+  // });
+  // useEffect(() => {
+  //   refetch();
+  // }, [address, refetch]);
 
-  useEffect(() => {
-    refetch();
-  }, [address, refetch]);
-
+  // if (isError) return <div>Error</div>;
+  console.log("d:", data);
   if (isPending) return <div>Loading...</div>;
-  if (isError) return <div>Error</div>;
-
   const newData = chunkArray(data.data, 4);
   // console.log(newData);
 
@@ -102,7 +120,7 @@ export default function WeatherByHour() {
   };
 
   return (
-    <div className="bg-white p-3 rounded-2xl mb-10 ">
+    <div className="bg-white p-4 rounded-2xl mb-10 ">
       <div className="flex justify-between items-center mb-10">
         <div className="font-semibold text-xl">Today</div>
         <div
