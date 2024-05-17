@@ -10,39 +10,23 @@ import DaumPostcode from "react-daum-postcode";
 import getCurrentTime from "@/utils/getCurrentTime";
 import downHour from "@/utils/downHour";
 import { getFullRegion } from "@/utils/region";
-
-interface WeatherInfo {
-  category: string;
-  fcstDate: string;
-  fcstTime: string;
-  fcstValue: string;
-  convertCategory: string;
-  convertFcstValue: string;
-}
-interface HourlyInfo {
-  data: Array<WeatherInfo>;
-  message: string;
-  status: string;
-}
-
 interface ChildProps {
-  data: HourlyInfo;
-  isPending: boolean;
+  date: string;
 }
 
-export default function WeatherByHour({ data, isPending }: ChildProps) {
+export default function WeatherByHour({ date }: ChildProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDrag, setIsDrag] = useState<boolean>(false);
   const [startX, setStartX] = useState<number | undefined>(undefined);
   const [showDaumPostcode, setShowDaumPostcode] = useState<boolean>(false);
   const [address, setAddress] = useState<string>("");
-  // const { data, isPending, isError, refetch } = useQuery({
-  //   queryKey: ["hourly"],
-  //   queryFn: getHourWeather,
-  // });
-  // useEffect(() => {
-  //   refetch();
-  // }, [address, refetch]);
+  const { data, isPending, isError, refetch } = useQuery({
+    queryKey: ["hourly"],
+    queryFn: () => getHourWeather(date),
+  });
+  useEffect(() => {
+    refetch();
+  }, [address, refetch]);
 
   // if (isError) return <div>Error</div>;
   console.log("d:", data);
@@ -120,7 +104,7 @@ export default function WeatherByHour({ data, isPending }: ChildProps) {
   };
 
   return (
-    <div className="bg-white p-4 rounded-2xl mb-10 ">
+    <div className="bg-white p-4 rounded-2xl mb-10 shadow-xl">
       <div className="flex justify-between items-center mb-10">
         <div className="font-semibold text-xl">Today</div>
         <div

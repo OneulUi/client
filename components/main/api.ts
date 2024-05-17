@@ -1,3 +1,4 @@
+//api.ts
 import { getDate } from "@/utils/getDate";
 import axios from "axios";
 
@@ -14,12 +15,12 @@ export async function getCurrentWeather(date: string) {
   return response.data;
 }
 
-export async function getHourWeather() {
+export async function getHourWeather(date: string) {
   const response = await axios.get(
     "http://13.124.159.141:8080/weather/hourly",
     {
       params: {
-        baseDate: getDate().split(".").join(""),
+        baseDate: date,
         address: localStorage.getItem("weather"),
       },
     }
