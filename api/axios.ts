@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const Axios = axios.create({
-  baseURL: "http://3.36.88.73:8080",
-  timeout: 1000,
+  baseURL:
+    "http://ec2-13-124-159-141.ap-northeast-2.compute.amazonaws.com:8080",
   headers: { "Content-Type": "application/json" },
 });
 
