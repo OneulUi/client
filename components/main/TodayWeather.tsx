@@ -2,33 +2,48 @@
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { getCurrentWeather } from "./api";
 import { useQuery } from "@tanstack/react-query";
+import { wording } from "@/utils/wordingByWeather";
+import { ChangeEvent, useEffect, useState } from "react";
+import { getDate, getTomorrow, getTwoDays } from "@/utils/getDate";
 
-// 온도에 따른 옷차림 워딩 로직
-const wording = (value: number) => {
-  if (value >= 28) return "무더운 한여름 온도입니다.";
-  else if (value < 28 && value >= 23) return "더운 여름 온도입니다.";
-  else if (value < 23 && value >= 20) return "더운 초여름 온도입니다.";
-  else if (value < 20 && value >= 17) return "따뜻한 봄 온도입니다.";
-  else if (value < 17 && value >= 12) return "청량한 간절기 온도입니다.";
-  else if (value < 12 && value >= 9) return "서늘한 가을 온도입니다.";
-  else if (value < 9 && value >= 5) return "쌀쌀한 늦가을 온도입니다.";
-  else if (value < 5) return "기온이 낮은 겨울 온도입니다.";
-};
+interface WeatherInfo {
+  category: string;
+  convertCategory: string;
+  convertFcstValue: string;
+  fcstDate: string;
+  fcstTime: string;
+  fcstValue: number;
+}
+interface ICurrentProps {
+  data: Array<WeatherInfo>;
+  message: string;
+  status: string;
+}
+interface ChildProps {
+  data: ICurrentProps;
+  date: string;
+}
 
-export default function TodayWeather() {
-  const { data, isPending, isError } = useQuery({
-    queryKey: ["current"],
-    queryFn: getCurrentWeather,
-  });
+export default function TodayWeather({ data, date }: ChildProps) {
+  console.log(data, date); // 데이터 잘 가져옴
+  const handleChange = () => {
+    const newDate = "20240514";
+  };
+  // const { data, isPending, isError, refetch } = useQuery({
+  //   queryKey: ["current"],
+  //   queryFn: () => getCurrentWeather(date),
+  // });
 
-  if (isPending) {
-    return <div>Loading...</div>;
-  }
+  // const [date, setDate] = useState(getDate().split(".").join(""));
+  // const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  //   setDate(e.target.value.split(".").join(""));
+  //   console.log(date);
+  // };
 
-  if (isError) {
-    return <div>Error</div>;
-  }
-  
+  // useEffect(() => {
+  //   refetch();
+  // }, [date, refetch]);
+
   //console.log(data);
 
   return (
@@ -36,16 +51,19 @@ export default function TodayWeather() {
       <div>
         <div className="flex items-center mb-2">
           {/* 드롭다운 css 추가 필요 + api에서 해당 일자에 맞는 날씨 정보 가져오기*/}
-          <form action="">
-            <select
-              name="date"
-              className="border-none bg-inherit checked:text-blue-100"
-            >
-              <option value="today">2024.04.25</option>
-              <option value="tomorrow">2024.04.26</option>
-              <option value="twodays">2024.04.27</option>
-            </select>
-          </form>
+          <select
+            onChange={handleChange}
+            name="date"
+            className="border-none bg-inherit checked:text-blue-100"
+          >
+            <option value={getDate()}>{getDate()}</option>
+            <option value={getTomorrow(getDate())}>
+              {getTomorrow(getDate())}
+            </option>
+            <option value={getTwoDays(getDate())}>
+              {getTwoDays(getDate())}
+            </option>
+          </select>
         </div>
 
         <div className="flex justify-between items-center">

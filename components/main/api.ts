@@ -1,12 +1,13 @@
+import { getDate } from "@/utils/getDate";
 import axios from "axios";
 
-export async function getCurrentWeather() {
+export async function getCurrentWeather(date: string) {
   const response = await axios.get(
     "http://13.124.159.141:8080/weather/current",
     {
       params: {
-        baseDate: "20240510",
-        address: "서울특별시 종로구",
+        baseDate: date,
+        address: localStorage.getItem("weather"),
       },
     }
   );
@@ -18,8 +19,8 @@ export async function getHourWeather() {
     "http://13.124.159.141:8080/weather/hourly",
     {
       params: {
-        baseDate: "20240510",
-        address: "서울특별시 종로구",
+        baseDate: getDate().split(".").join(""),
+        address: localStorage.getItem("weather"),
       },
     }
   );
