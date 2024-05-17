@@ -3,13 +3,13 @@ import { IoIosArrowForward } from "react-icons/io";
 import { ChangeEvent, useState } from "react";
 import { useEffect } from "react";
 interface WeatherProp {
-  temperature: number;
-  humidity: number;
+  temperature: string;
+  humidity: string;
 }
 export default function Weather2({ temperature, humidity }: WeatherProp) {
   const [weatherData, setWeatherData] = useState({
-    temperature: 0,
-    humidity: 0,
+    temperature: "",
+    humidity: "",
   });
   useEffect(() => {
     setWeatherData({ temperature, humidity });
@@ -23,6 +23,7 @@ export default function Weather2({ temperature, humidity }: WeatherProp) {
       [id]: value,
     }));
   };
+
   // const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
   //   const { id, value } = e.target;
 
@@ -31,14 +32,14 @@ export default function Weather2({ temperature, humidity }: WeatherProp) {
   //     [id]: value,
   //   }));
   // };
-
+  console.log(weatherData);
   // const handleInput = (e:InputEvent) => {
   //   const {id, value} = e.target;
   //   setWeatherData(prev) => ({
   //     ...prev, [id] : value
   //   })
   // }
-  console.log(weatherData);
+
   return (
     <section className="w-full relative flex items-center justify-center">
       {" "}
