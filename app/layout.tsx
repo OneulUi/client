@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   const router = useRouter();
-  const excludedPaths = ["/", "/signin"];
+  const excludedPaths = ["/", "/signin", "/survey", "/location"];
 
   const shouldShowFooter = !excludedPaths.includes(pathname);
 
