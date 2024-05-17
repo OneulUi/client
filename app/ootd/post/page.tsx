@@ -14,10 +14,6 @@ export default function PostPage() {
           alt="girl"
           priority
         />
-        <Button
-          text="시작하기"
-          href="http://localhost:8080/oauth2/authorization/google"
-        />
       </div>
     </main>
   );
