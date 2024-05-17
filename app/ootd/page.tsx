@@ -6,12 +6,10 @@ import Input from "@/components/input/Input";
 import HeaderOotd from "@/components/ootd/HeaderOotd";
 export default function Ootd() {
   return (
-    <main className="w-full flex flex-col items-center">
+    <main className="w-full flex flex-col items-center ">
       <HeaderOotd />
       <Input />
-      <section className="bg-blue-200 w-full flex flex-col items-center">
-        <UserComponent />
-        <UserComponent />
+      <section className=" w-full flex flex-col items-center">
         <UserComponent />
       </section>
     </main>
