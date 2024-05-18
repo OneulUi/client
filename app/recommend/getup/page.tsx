@@ -106,7 +106,7 @@ export default function GetUp() {
                   name={e.name}
                   className={` ${
                     index === e.name
-                      ? "border-solid border-blue-500 border bg-blue-500 text-white rounded-lg px-1 text-lg"
+                      ? "border-solid border-blue-500 border bg-blue-500 text-white rounded-lg px-1 text-lg w-20"
                       : "border-solid border-blue-300 border bg-blue-100 text-blue-500 rounded-lg px-1 text-xs"
                   }`}
                 >

@@ -1,9 +1,9 @@
-export default function First() {
+export default function Second() {
   return (
     <div className="flex w-full justify-around items-center">
       <div>
         <svg
-          className="w-48 h-48"
+          className="w-40 h-40"
           width="216"
           height="216"
           viewBox="0 0 216 216"
@@ -36,11 +36,11 @@ export default function First() {
         </svg>
       </div>
       <div className="flex flex-col px-2">
-        <span className="font-bold text-2xl">28°C~</span>
+        <span className="font-bold text-2xl">23~27°C</span>
         <span className="font-semibold mb-3">더운 날씨에요!</span>
         <div className="flex gap-1">
           <div className="border-2 border-blue-500 border-solid rounded-full text-blue-500 px-2">
-            민소매
+            티셔츠
           </div>
           <div className="border-2 border-blue-500 border-solid rounded-full text-blue-500 px-2">
             반바지
