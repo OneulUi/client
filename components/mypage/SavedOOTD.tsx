@@ -7,6 +7,7 @@ import { useRecoilState } from "recoil";
 import { savedOotdState } from "./atom";
 import { useEffect } from "react";
 import { FiBookmark } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 const temp = [
   {
@@ -90,6 +91,10 @@ export default function SavedOOTD() {
   });
 
   const [savedOotd, setSavedOotd] = useRecoilState(savedOotdState);
+  const router = useRouter();
+  const handleClick = (id: number) => {
+    router.push(`/ootd/${id}`);
+  };
 
   useEffect(() => {
     if (data) {
@@ -110,6 +115,7 @@ export default function SavedOOTD() {
           <div
             key={ootd.ootdId}
             className="w-full h-40 rounded-xl bg-gray-500 relative p-2 flex-shrink-0"
+            onClick={() => handleClick(ootd.ootdId)}
           >
             <span className="text-white absolute">{ootd.member.name}</span>
             <span className="text-white absolute right-3">

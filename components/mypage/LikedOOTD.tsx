@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useRecoilState } from "recoil";
 import { likedOotdState } from "./atom";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const temp = [
   {
@@ -89,6 +90,10 @@ export default function LikedOOTD() {
   });
 
   const [likedOotd, setLikedOotd] = useRecoilState(likedOotdState);
+  const router = useRouter();
+  const handleClick = (id: number) => {
+    router.push(`/ootd/${id}`);
+  };
 
   useEffect(() => {
     if (data) {
@@ -100,7 +105,7 @@ export default function LikedOOTD() {
   if (isLoading) <div>loading...</div>;
 
   return (
-    <div className="mb-32">
+    <div className="mb-32 h-48">
       <div className="flex justify-between mt-7 mb-2 px-5">
         <span className="font-bold">좋아한 OOTD</span>
         <Link href="/mypage/likedootd">
@@ -112,6 +117,7 @@ export default function LikedOOTD() {
           <div
             key={ootd.ootdId}
             className="w-36 h-40 rounded-xl bg-gray-500 relative p-2 flex-shrink-0"
+            onClick={() => handleClick(ootd.ootdId)}
           >
             <span className="text-xs absolute right-2 text-white">
               <FaHeart className="text-red-500" size={20} />

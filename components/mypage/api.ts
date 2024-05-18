@@ -25,10 +25,18 @@ export async function getSavedOotd() {
   return response.data;
 }
 
+export async function getMyOotd() {
+  const response = await axios.get("http://13.124.159.141:8080/ootds/me", {
+    headers: {
+      Authorization: getAccessToken(),
+    },
+  });
+  return response.data;
+}
+
 interface InfoProps {
   name: string;
   introduction: string;
-  //   image: string;
 }
 
 export async function editInfo(data: InfoProps) {

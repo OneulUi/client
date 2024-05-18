@@ -3,11 +3,16 @@ import Link from "next/link";
 import { FaChevronLeft, FaHeart } from "react-icons/fa";
 import { useRecoilValue } from "recoil";
 import { likedOotdState } from "@/components/mypage/atom";
+import { useRouter } from "next/navigation";
 
 export default function Likedootd() {
   const likedOotd = useRecoilValue(likedOotdState);
   const data = likedOotd.data || [];
   console.log("likedOotd", likedOotd);
+  const router = useRouter();
+  const handleClick = (id: number) => {
+    router.push(`/ootd/${id}`);
+  };
 
   return (
     <div className="w-full">
@@ -22,7 +27,12 @@ export default function Likedootd() {
       {data.length !== 0 ? (
         <div className="grid grid-cols-3 gap-1 mb-10">
           {data.map((ootd, index) => (
-            <div key={index} className="relative h-40 w-32 bg-gray-500 p-2">
+            <div
+              key={index}
+              className="relative h-40 w-32 bg-gray-500 p-2"
+              // @ts-ignore
+              onClick={() => handleClick(ootd.ootdId)}
+            >
               <span className="text-xs absolute right-2 text-white">
                 <FaHeart className="text-red-500" size={20} />
               </span>

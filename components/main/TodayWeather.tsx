@@ -35,6 +35,10 @@ export default function TodayWeather({ date }: ChildProps) {
     return <div>Loading...</div>;
   }
 
+  if (isError) {
+    return <div>Error!!</div>;
+  }
+
   console.log(data);
 
   return (

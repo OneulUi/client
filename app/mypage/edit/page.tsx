@@ -21,7 +21,6 @@ export default function Edit() {
   const [countNum, setCountNum] = useState(0);
   const [color, setColor] = useState("#6595ff");
   const { register, handleSubmit } = useForm();
-  const [imageSrc, setImageSrc]: any = useState(null);
 
   // const { data } = useQuery({ queryKey: ["ootd"], queryFn: getAllOotd });
   // console.log(data);
@@ -35,21 +34,8 @@ export default function Edit() {
     localStorage.setItem("color", str);
   };
 
-  const onUpload = (e: any) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    return new Promise<void>((resolve) => {
-      reader.onload = () => {
-        setImageSrc(reader.result || null); // 파일의 컨텐츠
-        resolve();
-      };
-    });
-  };
-
   const onSubmit = (data: any) => {
-    console.log(data);    
+    console.log(data);
     editInfo(data);
     window.location.href = "/mypage";
   };
@@ -75,20 +61,6 @@ export default function Edit() {
             height={100}
             alt="Description of the image"
           />
-          <input
-            id="input"
-            accept="image/*"
-            multiple
-            type="file"
-            onChange={(e) => onUpload(e)}
-            className="hidden"
-          />
-          <label
-            className="-mt-4 marker:border-white border-solid border-2 shadow-md rounded-full w-12 bg-white px-2 font-semibold"
-            htmlFor="input"
-          >
-            Edit
-          </label>
         </div>
       </div>
       <div className="p-3 mt-24">

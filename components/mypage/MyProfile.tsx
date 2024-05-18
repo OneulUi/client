@@ -6,13 +6,18 @@ import Link from "next/link";
 import { BsPencilSquare } from "react-icons/bs";
 
 export default function MyProfile() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["ootd"],
     queryFn: getMyInfo,
   });
   console.log(data);
   if (isLoading) {
     return <div>Loading...</div>;
+  }
+  if (isError || !data || !data.data) {
+    // alert("로그인이 필요합니다.");
+    // window.location.href = "/signin";
+    return <div>Error loading data</div>;
   }
   return (
     <>

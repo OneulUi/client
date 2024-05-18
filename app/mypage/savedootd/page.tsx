@@ -1,6 +1,7 @@
 "use client";
 import { savedOotdState } from "@/components/mypage/atom";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaChevronLeft } from "react-icons/fa";
 import { FiBookmark } from "react-icons/fi";
 import { useRecoilValue } from "recoil";
@@ -9,6 +10,10 @@ export default function Savedootd() {
   const savedOotd = useRecoilValue(savedOotdState);
   const data = savedOotd.data || [];
   console.log(savedOotd);
+  const router = useRouter();
+  const handleClick = (id: number) => {
+    router.push(`/ootd/${id}`);
+  };
   return (
     <div className="mb-20 w-full">
       <div className="mt-12 flex justify-between items-center px-3">
@@ -22,7 +27,12 @@ export default function Savedootd() {
       {data.length !== 0 ? (
         <div className="grid grid-cols-2 gap-[0.4rem] mb-10">
           {data.map((ootd, index) => (
-            <div key={index} className="relative h-60 w-48 bg-gray-500 p-2">
+            <div
+              key={index}
+              className="relative h-60 w-48 bg-gray-500 p-2"
+              //@ts-ignore
+              onClick={() => handleClick(ootd.ootdId)}
+            >
               <span className="text-xs absolute right-2 text-white">
                 <FiBookmark />
               </span>
