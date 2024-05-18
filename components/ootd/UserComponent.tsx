@@ -4,7 +4,7 @@ import Image from "next/image";
 import sun from "@/assets/woman.png";
 export default function UserComponent({ data }: any) {
   return (
-    <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-200">
+    <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[500px] bg-gray-200">
       <div className="flex justify-between items-center h-1/5">
         <span className="font-thin">ID: {data?.member.email}</span>
         <div className="flex items-center relative">

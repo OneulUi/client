@@ -29,7 +29,7 @@ export default function UserComponent3() {
           </div>
         </div>
         <span className="text-sm font-extralight p-1">
-          {/* {new Date().toLocaleString()} */}
+          2024. 5. 18. 오전 5:46:19
         </span>
         <span className="p-1 text-green-900 font-middle mb-2">
           오늘 날씨 좋아요 ☀️

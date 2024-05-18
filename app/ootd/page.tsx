@@ -18,7 +18,7 @@ export default function Ootd() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await Axios.get("/ootds/weather", {
+        const res = await Axios.get("/ootds", {
           params: { temperature: 20, humidity: 20 },
         });
         setOotdData(res.data.data);
@@ -32,7 +32,7 @@ export default function Ootd() {
   }, []);
 
   return (
-    <main className="w-full flex flex-col items-center ">
+    <main className="w-full flex flex-col items-center">
       <HeaderOotd />
       <div className="w-full flex justify-center items-center relative">
         <input
@@ -43,12 +43,12 @@ export default function Ootd() {
         />
         <IoIosSearch
           size={24}
-          className="absolute right-0 mr-[60px] text-gray-500 cursor-pointer hover:text-blue-500"
+          className="absolute right-0 mr-[60px] text-gray-500 cursor-pointer hover:text-blue-300"
         />
       </div>
-      <section className=" w-full flex flex-col items-center bg-gradient-to-tr from-pink-500 to-blue-200 ">
+      <section className=" w-full flex flex-col items-center bg-gradient-to-tr from-pink-300 to-blue-200  pb-[120px]">
         <UserComponent3 />
-        <UserComponent2 />
+
         {ootdData.length > 1 ? (
           ootdData.map((data) => (
             <UserComponent key={data.ootdId} data={data} />

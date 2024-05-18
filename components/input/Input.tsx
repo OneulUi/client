@@ -23,6 +23,7 @@ export default function Input({
         type="text"
         // onFocus={handleFocus}
       />
+
       <IoIosSearch
         size={24}
         className="absolute right-0 mr-[60px] text-gray-500 cursor-pointer hover:text-blue-500"

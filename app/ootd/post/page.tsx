@@ -14,8 +14,20 @@ import { CiFaceFrown } from "react-icons/ci";
 import { CiFaceSmile } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa6";
 import { IoBookmarkOutline } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
+import { IoBookmark } from "react-icons/io5";
 export default function PostPage() {
   const [ootdData, setOotdData] = useState<OotdData | null>(null);
+  const [heart, setHeart] = useState<boolean>(false);
+  const [mark, setMark] = useState<boolean>(false);
+  const handleHeartClick = () => {
+    setHeart(!heart);
+  };
+
+  const handleBookMarkClick = () => {
+    setMark(!mark);
+  };
+
   const dateNow = getDate();
   useEffect(() => {
     const fetchData = async () => {
@@ -40,10 +52,27 @@ export default function PostPage() {
             <IoIosArrowBack />
           </Link>
         </div>
-        <div className="absolute top-5 flex right-5">
-          <FaRegHeart size={29} className="text-red-400 mr-4" />
-          <IoBookmarkOutline size={29} className="text-green-900" />
+        <div
+          onClick={handleHeartClick}
+          className="absolute top-5 flex right-12"
+        >
+          {heart ? (
+            <FaHeart size={29} className="text-red-400 mr-4" />
+          ) : (
+            <FaRegHeart size={29} className="text-red-400 mr-4" />
+          )}
         </div>
+        <div
+          onClick={handleBookMarkClick}
+          className="absolute top-5 flex right-5"
+        >
+          {mark ? (
+            <IoBookmark size={29} className="text-green-900" />
+          ) : (
+            <IoBookmarkOutline size={29} className="text-green-900" />
+          )}
+        </div>
+
         <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-700 "></div>
         {/* <HeaderPost /> */}
         <Image
