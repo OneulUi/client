@@ -1,10 +1,11 @@
 "use client";
 import { GoPencil } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
+import { IoSearch } from "react-icons/io5";
 import Link from "next/link";
 export default function OotdHeader() {
   const alertMessage = () => {
-    alert("위치 변경은 준비중입니다!");
+    alert("온도에 따른 검색은 검색창을 이용해주세요.");
   };
 
   return (
@@ -25,6 +26,10 @@ export default function OotdHeader() {
       </div>
       <Link href="/ootd/write">
         <GoPencil className="mr-4" size={22} />
+      </Link>
+      <Link href="/ootd/search">
+        {" "}
+        <IoSearch className="mr-4" size={22} />
       </Link>
     </section>
   );
