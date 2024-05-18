@@ -11,7 +11,7 @@ import { RiHeart2Line } from "react-icons/ri";
 export default function Footer() {
   const pathName = usePathname();
   return (
-    <footer className="fixed bottom-0 border-t-2 py-4 w-[500px] h-[10vh] text-sm bg-white">
+    <footer className="fixed bottom-0 border-t-2 py-4 w-[500px] h-[8vh] text-sm bg-white">
       <div className="flex w-full items-center justify-around">
         <Link href="/main" className="flex flex-col items-center">
           <TiWeatherSunny size={27} className="text-gray-600" />

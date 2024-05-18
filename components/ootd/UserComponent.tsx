@@ -4,7 +4,7 @@ import Image from "next/image";
 import sun from "@/assets/woman.png";
 export default function UserComponent({ data }: any) {
   return (
-    <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-100">
+    <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-200">
       <div className="flex justify-between items-center h-1/5">
         <span className="font-thin">ID: {data?.member.email}</span>
         <div className="flex items-center relative">
@@ -18,10 +18,8 @@ export default function UserComponent({ data }: any) {
           </span>
         </div>
       </div>
-      <span className="text-sm font-extralight p-1">
-        {/* {new Date().toLocaleString()} */}
-      </span>
-      <span className="p-1 text-green-900 font-thin mb-2">{data.review}</span>
+
+      <span className="p-1 text-gray-900 font-middle mb-2">{data.review}</span>
       <div className="border rounded-3xl h-full overflow-hidden">
         {/* 이미지 로딩 */}
         <Image

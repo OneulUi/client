@@ -5,14 +5,14 @@ import { ChangeEvent, useState } from "react";
 interface TemperatureInputProp {
   handleTemperatureInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   temperatureValue: string | undefined;
+  onSearchClick: () => void;
 }
 
 export default function Input({
   handleTemperatureInput,
   temperatureValue,
+  onSearchClick,
 }: TemperatureInputProp) {
-  const [temperature, setTemperature] = useState("");
-
   return (
     <div className="w-full flex justify-center items-center relative">
       <input
@@ -25,7 +25,8 @@ export default function Input({
       />
       <IoIosSearch
         size={24}
-        className="absolute right-0 mr-[60px] text-gray-500"
+        className="absolute right-0 mr-[60px] text-gray-500 cursor-pointer hover:text-blue-500"
+        onClick={onSearchClick}
       />
     </div>
   );

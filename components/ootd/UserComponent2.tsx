@@ -15,7 +15,7 @@ export default function UserComponent2() {
   return (
     <>
       {" "}
-      <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[500px] bg-gray-100">
+      <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-100">
         <div className="flex justify-between items-center h-1/5">
           <span className="font-thin">ID : {name}</span>
           <div className="flex items-center relative">
@@ -32,12 +32,12 @@ export default function UserComponent2() {
         <span className="text-sm font-extralight p-1">
           2024. 5. 18. 오전 2:46:19
         </span>
-        <span className="p-1 text-blue-900 mb-2 font-thin">
-          오늘 좀 덥네요 ~{" "}
+        <span className="p-1 text-blue-900 mb-2 font-middle">
+          날씨 좋아서 소풍나왔어요!
         </span>
         <div className="border rounded-3xl h-full overflow-hidden">
           <Image
-            src={sun}
+            src="https://cdn.pixabay.com/photo/2022/03/15/15/19/child-7070573_1280.jpg"
             className="w-full h-full  rounded-3xl"
             width={500}
             height={500}

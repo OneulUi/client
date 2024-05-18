@@ -15,7 +15,7 @@ export default function UserComponent3() {
   return (
     <>
       {" "}
-      <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-100">
+      <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-[rgba(251,251,251)]">
         <div className="flex justify-between items-center h-1/5">
           <span className="font-thin">ID : {name}</span>
           <div className="flex items-center relative">
@@ -31,7 +31,7 @@ export default function UserComponent3() {
         <span className="text-sm font-extralight p-1">
           {/* {new Date().toLocaleString()} */}
         </span>
-        <span className="p-1 text-green-900 font-thin mb-2">
+        <span className="p-1 text-green-900 font-middle mb-2">
           오늘 날씨 좋아요 ☀️
         </span>
         <div className="border rounded-3xl h-full overflow-hidden">
