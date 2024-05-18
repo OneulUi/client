@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { FaCheck } from "react-icons/fa6";
 import { getAllOotd } from "@/utils/test";
 import { useQuery } from "@tanstack/react-query";
+import { editInfo } from "@/components/mypage/api";
 
 // const colorObj: { [key: string]: string } = {
 //   blue: "#6595ff",
@@ -21,8 +22,8 @@ export default function Edit() {
   const [color, setColor] = useState("#6595ff");
   const { register, handleSubmit } = useForm();
 
-  const { data } = useQuery({ queryKey: ["ootd"], queryFn: getAllOotd });
-  console.log(data);
+  // const { data } = useQuery({ queryKey: ["ootd"], queryFn: getAllOotd });
+  // console.log(data);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCountNum(e.target.value.length);
@@ -30,11 +31,13 @@ export default function Edit() {
 
   const handleClick = (str: string) => {
     setColor(str);
+    localStorage.setItem("color", str);
   };
 
   const onSubmit = (data: any) => {
     console.log(data);
-    // 내 정보에 이름, 소개, 배경색 업데이트하는 로직
+    editInfo(data);
+    window.location.href = "/mypage";
   };
 
   return (
@@ -58,9 +61,6 @@ export default function Edit() {
             height={100}
             alt="Description of the image"
           />
-          <button className="-mt-4 marker:border-white border-solid border-2 shadow-md rounded-full w-12 bg-white px-2 font-semibold">
-            Edit
-          </button>
         </div>
       </div>
       <div className="p-3 mt-24">
@@ -76,16 +76,16 @@ export default function Edit() {
             {...register("name")}
             className="text-sm p-2 border-solid border border-blue-300 rounded-xl placeholder:text-gray focus:border-blue-500 outline-none"
           />
-          <label htmlFor="introduce" className="font-bold mt-4 mb-1">
+          <label htmlFor="introduction" className="font-bold mt-4 mb-1">
             내 소개
           </label>
           <div className="relative">
             <textarea
-              id="introduce"
+              id="introduction"
               placeholder="설명하기"
               rows={6}
               maxLength={200}
-              {...register("introduce", { onChange: handleChange })}
+              {...register("introduction", { onChange: handleChange })}
               className="text-sm w-full px-2 pt-2 border-solid border border-blue-300 rounded-xl placeholder:text-gray  focus:border-blue-500 outline-none"
             ></textarea>
             <p className="absolute bottom-3 right-3 text-sm">{countNum}/200</p>

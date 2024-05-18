@@ -1,6 +1,6 @@
 export default function Sixth() {
   return (
-    <div className="mx-5 my-10">
+    <div className="ml-5 my-10">
       <div className="flex flex-col mb-3">
         <span className="text-gray-600 text-2xl ">9~11도 사이의</span>
         <span className="text-gray-600 text-2xl ">필수 옷차림은</span>
@@ -10,17 +10,16 @@ export default function Sixth() {
         <span className="text-gray-400 text-sm">쌀쌀한 온도이니</span>
         <span className="text-gray-400 text-sm">겉옷을 챙겨 주세요!</span>
       </div>
-      <div className="flex gap-1 mb-20">
-        <div className="text-blue-500 border-2 border-blue-500 border-solid">
-          트렌치코트
-        </div>
-        <div className="text-blue-500 border-2 border-blue-500 border-solid">
-          야상
-        </div>
-        <div className="text-blue-500 border-2 border-blue-500 border-solid">
-          자켓
-        </div>
-      </div>
+      <div className="mb-20 flex flex-col gap-1">
+  <div className="flex gap-1">
+    <div className="rounded-full border border-solid border-blue-500 px-2 text-blue-500">트렌치코트</div>
+    <div className="rounded-full border border-solid border-blue-500 px-2 text-blue-500">야상</div>
+  </div>
+  <div className="flex">
+    <div className="rounded-full border border-solid border-blue-500 px-2 text-blue-500">자켓</div>
+  </div>
+</div>
+
       <div className="w-[200px] h-[200px] border-black border-2 border-solid">
         이미지
       </div>

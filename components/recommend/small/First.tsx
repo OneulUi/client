@@ -35,7 +35,7 @@ export default function First() {
           </defs>
         </svg>
       </div>
-      <div className="flex flex-col ">
+      <div className="flex flex-col px-2">
         <span className="font-bold text-2xl">28°C~</span>
         <span className="font-semibold mb-3">더운 날씨에요!</span>
         <div className="flex gap-1">

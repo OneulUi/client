@@ -16,42 +16,42 @@ export default function GetUp() {
   const data = [
     {
       id: 1,
-      text: "28~",
+      text: "28°C~",
       name: "first",
     },
     {
       id: 2,
-      text: "23~27",
+      text: "23~27°C",
       name: "second",
     },
     {
       id: 3,
-      text: "20~22",
+      text: "20~22°C",
       name: "third",
     },
     {
       id: 4,
-      text: "17~19",
+      text: "17~19°C",
       name: "fourth",
     },
     {
       id: 5,
-      text: "12~16",
+      text: "12~16°C",
       name: "fifth",
     },
     {
       id: 6,
-      text: "9~11",
+      text: "9~11°C",
       name: "sixth",
     },
     {
       id: 7,
-      text: "5~8",
+      text: "5~8°C",
       name: "seventh",
     },
     {
       id: 8,
-      text: "~4",
+      text: "~4°C",
       name: "eighth",
     },
   ];
@@ -87,7 +87,7 @@ export default function GetUp() {
 
   return (
     <div className="w-full">
-      <header className="flex items-center justify-between mt-10 px-5">
+      <header className="flex items-center justify-between mt-10 mb-10 px-5">
         <Link href="/recommend">
           <FaChevronLeft />
         </Link>
@@ -95,8 +95,8 @@ export default function GetUp() {
         <div></div>
       </header>
       <div className="flex">
-        <div className="w-4/6">{indexFn(index)}</div>
-        <div className="flex w-2/6 justify-end px-5">
+        <div className="w-8/12">{indexFn(index)}</div>
+        <div className="flex w-4/12 justify-end pr-5">
           <div className="flex flex-col justify-around h-[90%] mr-2">
             {data.map((e) => {
               return (
@@ -104,8 +104,10 @@ export default function GetUp() {
                   onClick={handleClick}
                   key={e.id}
                   name={e.name}
-                  className={`border-solid border-black border-2 ${
-                    index === e.name ? "border-blue-500" : ""
+                  className={` ${
+                    index === e.name
+                      ? "border-solid border-blue-500 border bg-blue-500 text-white rounded-lg px-1 text-lg w-20"
+                      : "border-solid border-blue-300 border bg-blue-100 text-blue-500 rounded-lg px-1 text-xs"
                   }`}
                 >
                   {e.text}

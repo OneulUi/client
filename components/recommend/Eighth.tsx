@@ -1,6 +1,6 @@
 export default function Eighth() {
   return (
-    <div className="mx-5 my-10">
+    <div className="ml-5 my-10">
       <div className="flex flex-col mb-3">
         <span className="text-gray-600 text-2xl ">4도 이하의</span>
         <span className="text-gray-600 text-2xl ">필수 옷차림은</span>
@@ -12,20 +12,25 @@ export default function Eighth() {
           따뜻한 겨울 옷차림을 하세요!
         </span>
       </div>
-      <div className="flex gap-1 mb-20">
-        <div className="text-blue-500 border-2 border-blue-500 border-solid">
-          패딩
+      <div className="mb-20 flex flex-col gap-1">
+        <div className="flex gap-1">
+          <div className="rounded-full border border-solid border-blue-500 px-2 text-blue-500">
+            패딩
+          </div>
+          <div className="rounded-full border border-solid border-blue-500 px-2 text-blue-500">
+            두꺼운 코트
+          </div>
         </div>
-        <div className="text-blue-500 border-2 border-blue-500 border-solid">
-          두꺼운 코트
-        </div>
-        <div className="text-blue-500 border-2 border-blue-500 border-solid">
-          히트텍/내복
-        </div>
-        <div className="text-blue-500 border-2 border-blue-500 border-solid">
-          목도리, 장갑
+        <div className="flex gap-1">
+          <div className="rounded-full border border-solid border-blue-500 px-2 text-blue-500">
+            히트텍/내복
+          </div>
+          <div className="rounded-full border border-solid border-blue-500 px-2 text-blue-500">
+            목도리,장갑
+          </div>
         </div>
       </div>
+
       <div className="w-[200px] h-[200px] border-black border-2 border-solid">
         이미지
       </div>
