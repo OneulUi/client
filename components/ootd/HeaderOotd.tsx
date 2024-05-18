@@ -11,11 +11,11 @@ export default function OotdHeader() {
     <section className="flex p-6 w-full justify-between items-center relative">
       <div className="grid grid-cols-4 items-center relative">
         <span className="text-[40px] mr-8 font-bold">
-          22 <span className="text-sm absolute top-4">{`\u00b0C`}</span>
+          20 <span className="text-sm absolute top-4">{`\u00b0C`}</span>
         </span>
 
         <span className="text-[40px] mr-4 font-bold">
-          29<span className="text-sm absolute top-4">%</span>
+          20<span className="text-sm absolute top-4">%</span>
         </span>
 
         <IoIosArrowDown

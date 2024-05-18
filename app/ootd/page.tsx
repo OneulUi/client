@@ -34,8 +34,8 @@ export default function Ootd() {
         const res = await Axios.get("/ootds/weather", {
           params: { temperature: 20, humidity: 20 },
         });
-        setOotdData(res.data);
-        console.log(res.data);
+        setOotdData(res.data.data);
+        console.log(res.data.data[0].ootdImages[0].fileName);
       } catch (error) {
         console.error("Error fetching ootd data:", error);
       }
@@ -47,9 +47,11 @@ export default function Ootd() {
   return (
     <main className="w-full flex flex-col items-center ">
       <HeaderOotd />
-      <Input />
+      {/* <Input /> */}
       <section className=" w-full flex flex-col items-center">
-        <UserComponent key={ootdData[0]?.ootdId} data={ootdData[0]} />
+        {ootdData.map((data) => (
+          <UserComponent key={data.ootdId} data={data} />
+        ))}
         <UserComponent3 />
         <UserComponent2 />
       </section>

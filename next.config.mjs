@@ -9,6 +9,14 @@ const nextConfig = {
         pathname: "/**",
       },
     ],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "ec2-13-124-159-141.ap-northeast-2.compute.amazonaws.com",
+        port: "8080",
+        pathname: "/ootds/images/**",
+      },
+    ],
   },
 };
 

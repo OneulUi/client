@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const Axios = axios.create({
-  baseURL:
-    "http://ec2-13-124-159-141.ap-northeast-2.compute.amazonaws.com:8080",
+  baseURL: `${process.env.NEXT_PUBLIC_IP_API_KEY}`,
   headers: { "Content-Type": "application/json" },
 });
 

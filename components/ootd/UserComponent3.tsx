@@ -29,7 +29,7 @@ export default function UserComponent3() {
           </div>
         </div>
         <span className="text-sm font-extralight p-1">
-          {new Date().toLocaleString()}
+          {/* {new Date().toLocaleString()} */}
         </span>
         <span className="p-1 text-green-900 font-thin mb-2">
           오늘 날씨 좋아요 ☀️
