@@ -1,9 +1,9 @@
 import Image from "next/image";
-import sun from "@/assets/sun.png";
+import woman from "@/assets/woman.png";
 import { CiHeart } from "react-icons/ci";
 import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
-export default function SearchComponent({ data }: any) {
+export default function ExampleSearch() {
   const [isClick, setIsClick] = useState<boolean>(false);
 
   const handleOnClick = () => {
@@ -13,7 +13,7 @@ export default function SearchComponent({ data }: any) {
   return (
     <div className="relative border-2">
       <Image
-        src={`${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${data?.ootdImages[0].fileName}`}
+        src={woman}
         className="w-full h-[170px] object-cover"
         width={500}
         height={500}
@@ -22,10 +22,8 @@ export default function SearchComponent({ data }: any) {
       />
       <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between p-4 text-white">
         <div className="absolute bottom-2 left-2">
-          <h2 className="text-xl font-extrabold text-gray-200">
-            {data?.temperature}°C
-          </h2>
-          <p className="text-md font-bold text-gray-200">{data?.humidity}% </p>
+          <h2 className="text-xl font-extrabold text-gray-200">21°C</h2>
+          <p className="text-md font-bold text-gray-200">19% </p>
         </div>
         {/* <div>
           <p className="text-lg  text-gray-800">{data?.review}</p>

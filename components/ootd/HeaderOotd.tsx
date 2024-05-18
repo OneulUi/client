@@ -1,21 +1,22 @@
 "use client";
 import { GoPencil } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
+import { IoSearch } from "react-icons/io5";
 import Link from "next/link";
 export default function OotdHeader() {
   const alertMessage = () => {
-    alert("위치 변경은 준비중입니다!");
+    alert("온도에 따른 검색은 검색창을 이용해주세요.");
   };
 
   return (
     <section className="flex p-6 w-full justify-between items-center relative">
       <div className="grid grid-cols-4 items-center relative">
         <span className="text-[40px] mr-8 font-bold">
-          22 <span className="text-sm absolute top-4">{`\u00b0C`}</span>
+          20 <span className="text-sm absolute top-4">{`\u00b0C`}</span>
         </span>
 
         <span className="text-[40px] mr-4 font-bold">
-          29<span className="text-sm absolute top-4">%</span>
+          20<span className="text-sm absolute top-4">%</span>
         </span>
 
         <IoIosArrowDown
@@ -25,6 +26,10 @@ export default function OotdHeader() {
       </div>
       <Link href="/ootd/write">
         <GoPencil className="mr-4" size={22} />
+      </Link>
+      <Link href="/ootd/search">
+        {" "}
+        <IoSearch className="mr-4" size={22} />
       </Link>
     </section>
   );

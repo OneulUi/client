@@ -6,36 +6,23 @@ import UserComponent from "@/components/ootd/UserComponent";
 import UserComponent2 from "@/components/ootd/UserComponent2";
 import { Axios } from "@/api/axios";
 import UserComponent3 from "@/components/ootd/UserComponent3";
-
+import { OotdData } from "@/api/type";
+import { IoIosSearch } from "react-icons/io";
+import { useRouter } from "next/navigation";
 export default function Ootd() {
   const [ootdData, setOotdData] = useState<OotdData[]>([]);
-  interface OotdData {
-    ootdId: number;
-    review: string;
-    temperature: string;
-    humidity: string;
-    satisfaction: string;
-    ootdImages: { ootdImageId: number; fileName: string }[];
-    member: {
-      memberId: number;
-      email: string;
-      name: string;
-      introduction: string | null;
-      survey: {
-        surveyId: number;
-        options: string;
-        weights: number;
-      };
-    };
-  }
+  const router = useRouter();
+  const handleRouter = () => {
+    router.push("/ootd/search");
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await Axios.get("/ootds/weather", {
+        const res = await Axios.get("/ootds", {
           params: { temperature: 20, humidity: 20 },
         });
-        setOotdData(res.data);
-        console.log(res.data);
+        setOotdData(res.data.data);
+        console.log(res.data.data[0].ootdImages[0].fileName);
       } catch (error) {
         console.error("Error fetching ootd data:", error);
       }
@@ -45,13 +32,30 @@ export default function Ootd() {
   }, []);
 
   return (
-    <main className="w-full flex flex-col items-center ">
+    <main className="w-full flex flex-col items-center">
       <HeaderOotd />
-      <Input />
-      <section className=" w-full flex flex-col items-center">
-        <UserComponent key={ootdData[0]?.ootdId} data={ootdData[0]} />
+      <div className="w-full flex justify-center items-center relative">
+        <input
+          className="border-2 w-5/6 m-4 p-3 rounded-2xl text-sm focus:outline-none"
+          placeholder="온도별 옷차림을 검색해보세요!"
+          type="text"
+          onFocus={handleRouter}
+        />
+        <IoIosSearch
+          size={24}
+          className="absolute right-0 mr-[60px] text-gray-500 cursor-pointer hover:text-blue-300"
+        />
+      </div>
+      <section className=" w-full flex flex-col items-center bg-gradient-to-tr from-pink-300 to-blue-200  pb-[120px]">
         <UserComponent3 />
-        <UserComponent2 />
+
+        {ootdData.length > 1 ? (
+          ootdData.map((data) => (
+            <UserComponent key={data.ootdId} data={data} />
+          ))
+        ) : (
+          <UserComponent2 />
+        )}
       </section>
     </main>
   );

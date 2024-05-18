@@ -8,7 +8,9 @@ export default function HeaderSearch() {
       <Link href="/ootd" className="absolute left-4">
         <IoIosArrowBack />
       </Link>
-      <span className="text-gray-600 text-[20px] font-thin">텍스트 검색</span>
+      <span className="text-gray-600 text-[20px] font-thin">
+        온도로 찾아보기
+      </span>
     </section>
   );
 }
