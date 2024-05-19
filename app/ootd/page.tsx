@@ -22,7 +22,7 @@ export default function Ootd() {
           params: { temperature: 20, humidity: 20 },
         });
         setOotdData(res.data.data);
-        console.log(res.data.data[0].ootdImages[0].fileName);
+        console.log(res.data.data);
       } catch (error) {
         console.error("Error fetching ootd data:", error);
       }
@@ -48,13 +48,15 @@ export default function Ootd() {
       </div>
       <section className=" w-full flex flex-col items-center bg-gradient-to-tr from-pink-300 to-blue-200  pb-[120px]">
         <UserComponent3 />
-
+        <UserComponent2 />
         {ootdData.length > 1 ? (
           ootdData.map((data) => (
             <UserComponent key={data.ootdId} data={data} />
           ))
+        ) : ootdData.length === 1 ? (
+          <UserComponent key={ootdData[0].ootdId} data={ootdData[0]} />
         ) : (
-          <UserComponent2 />
+          <div>해당 날씨의 데이터가 없습니다.</div>
         )}
       </section>
     </main>

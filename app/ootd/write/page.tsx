@@ -32,6 +32,10 @@ export default function OotdWrite() {
     setSatisfaction(value);
   };
   const uploadImageToServer = async () => {
+    if (!uploadFile || !temperature || !humidity || !review) {
+      alert("모든 필드를 채워주세요!");
+      return;
+    }
     const data = {
       ootd: {
         review,
@@ -46,6 +50,9 @@ export default function OotdWrite() {
       "ootd",
       new Blob([JSON.stringify(data.ootd)], { type: "application/json" })
     );
+    // if (!formData) {
+    //   alert("빈 곳이 있습니다!");
+    // }
     router.push("/ootd/post");
     const accessToken = localStorage.getItem("accessToken");
     console.log(formData);
@@ -77,7 +84,6 @@ export default function OotdWrite() {
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setReview(e.target.value);
   };
-  console.log(uploadFile);
 
   // const postHandler = async () => {
   //   const data = {

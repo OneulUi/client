@@ -1,24 +1,33 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { MdPerson } from "react-icons/md";
 import sun from "@/assets/woman.png";
 export default function UserComponent({ data }: any) {
   return (
-    <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[500px] bg-gray-200">
+    <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[500px] bg-gray-100">
       <div className="flex justify-between items-center h-1/5">
-        <span className="font-thin">ID: {data?.member.email}</span>
+        <span className="font-thin flex items-center">
+          <p className="mr-2">
+            <MdPerson />
+          </p>
+          <p>{data?.member.email}</p>
+        </span>
+
         <div className="flex items-center relative">
-          <span className="text-[20px] mr-8 font-bold">
+          <span className="text-[38px] mr-6 font-bold">
             {data?.temperature}
-            <span className="text-sm font-thin absolute top-1">{`\u00b0C`}</span>
+            <span className="text-sm font-thin absolute top-0 left-10">{`\u00b0C`}</span>
           </span>
-          <span className="text-[20px] mr-4 font-bold">
+          <span className="border-r h-[25px] border-black absolute right-1/2 transform -translate-x-1/2"></span>
+
+          <span className="text-[38px] font-bold">
             {data?.humidity}
             <span className="text-sm font-thin absolute top-1">%</span>
           </span>
         </div>
       </div>
-
+      <span className="text-sm font-extralight p-1">{data?.issueDate}</span>
       <span className="p-1 text-gray-900 font-middle mb-2">{data.review}</span>
       <div className="border rounded-3xl h-full overflow-hidden">
         {/* 이미지 로딩 */}

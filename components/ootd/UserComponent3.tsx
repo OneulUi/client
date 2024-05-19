@@ -2,6 +2,7 @@
 import Image from "next/image";
 import sun from "@/assets/woman.png";
 import { useEffect, useState } from "react";
+import { MdPerson } from "react-icons/md";
 export default function UserComponent3() {
   const [name, setName] = useState<string | null>(null);
   const getId = () => {
@@ -17,20 +18,25 @@ export default function UserComponent3() {
       {" "}
       <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-[rgba(251,251,251)]">
         <div className="flex justify-between items-center h-1/5">
-          <span className="font-thin">ID : {name}</span>
+          <span className="font-thin flex items-center">
+            <p className="mr-2">
+              <MdPerson />
+            </p>
+            <p>Rina</p>
+          </span>
           <div className="flex items-center relative">
-            <span className="text-[20px] mr-8 font-bold">
+            <span className="text-[38px] mr-6 font-bold">
               17
               <span className="text-sm font-thin absolute top-1">{`\u00b0C`}</span>
             </span>
-            <span className="text-[20px] mr-4 font-bold">
+            <span className="border-r h-[25px] border-black absolute right-1/2 transform -translate-x-1/2"></span>
+
+            <span className="text-[38px] ml-2 font-bold">
               39<span className="text-sm font-thin absolute top-1">%</span>
             </span>
           </div>
         </div>
-        <span className="text-sm font-extralight p-1">
-          2024. 5. 18. 오전 5:46:19
-        </span>
+        <span className="text-sm font-extralight p-1">DATE : 2024-5-18</span>
         <span className="p-1 text-green-900 font-middle mb-2">
           오늘 날씨 좋아요 ☀️
         </span>
