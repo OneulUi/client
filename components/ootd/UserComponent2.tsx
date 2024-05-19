@@ -17,7 +17,7 @@ export default function UserComponent2() {
       {" "}
       <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-100">
         <div className="flex justify-between items-center h-1/5">
-          <span className="font-thin">ID : {name}</span>
+          <span className="font-thin">ID : Summer</span>
           <div className="flex items-center relative">
             <span className="text-[20px] mr-8 font-bold">
               28

@@ -12,27 +12,35 @@ export default function SearchComponent({ data }: any) {
 
   return (
     <div className="relative border-2">
-      <Image
-        src={`${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${data?.ootdImages[0].fileName}`}
-        className="w-full h-[170px] object-cover"
-        width={500}
-        height={500}
-        alt="girl"
-        priority
-      />
+      {data ? (
+        <Image
+          src={`${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${data?.ootdImages[0].fileName}`}
+          className="w-full h-[170px] object-cover"
+          width={500}
+          height={500}
+          alt="girl"
+          priority
+        />
+      ) : (
+        <Image
+          src={sun}
+          className="w-full h-[170px] object-cover"
+          width={500}
+          height={500}
+          alt="sun"
+          priority
+        />
+      )}
+
       <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between p-4 text-white">
         <div className="absolute bottom-2 left-2">
-          <h2 className="text-xl font-extrabold text-gray-200">
-            {data?.temperature}°C
+          <h2 className="text-xl font-extrabold text-gray-700">
+            {data ? `${data.temperature}°C` : `18°C`}
           </h2>
-          <p className="text-md font-bold text-gray-200">{data?.humidity}% </p>
-        </div>
-        {/* <div>
-          <p className="text-lg  text-gray-800">{data?.review}</p>
-          <p className="text-sm  text-gray-800">
-            Satisfaction: {data?.satisfaction}
+          <p className="text-md font-bold text-gray-700">
+            {data ? `${data.humidity}%` : `27%`}{" "}
           </p>
-        </div> */}
+        </div>
         <div onClick={handleOnClick}>
           {isClick ? (
             <FaHeart
