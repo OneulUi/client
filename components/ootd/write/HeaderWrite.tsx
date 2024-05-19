@@ -6,6 +6,7 @@ import axios from "axios";
 interface HeaderProps {
   onClick: () => void;
 }
+
 export default function Header({ onClick }: HeaderProps) {
   return (
     <section className="flex items-center justify-between p-6 w-full backdrop-blur-[1px]">
