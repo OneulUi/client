@@ -19,7 +19,7 @@ export default function SignIn() {
     // );
     // console.log(response);
     router.push(
-      "http://ec2-13-124-159-141.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/login/redirect"
+      "http://ec2-13-124-159-141.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?redirect_uri=https://vercel-public-five.vercel.app/login/redirect"
     );
   };
 
