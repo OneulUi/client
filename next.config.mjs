@@ -4,7 +4,7 @@ const nextConfig = {
     return [
       {
         source: "/:path*",
-        destination: `${process.env.NEXT_PUBLIC_IP_API_KEY}`,
+        destination: "http://vercel-public-five.vercel.app/:path*",
       },
     ];
   },
