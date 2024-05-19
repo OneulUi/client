@@ -84,7 +84,6 @@ export default function OotdWrite() {
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setReview(e.target.value);
   };
-  console.log(uploadFile);
 
   // const postHandler = async () => {
   //   const data = {
