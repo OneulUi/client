@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        destination: "http://vercel-public-five.vercel.app/:path*",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
