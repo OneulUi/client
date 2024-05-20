@@ -1,3 +1,5 @@
+"use client";
+
 import "./globals.css";
 import RecoilRootWrapper from "@/components/recoil/RecoilWrapper";
 import Providers from "@/components/react-query/Providers";
