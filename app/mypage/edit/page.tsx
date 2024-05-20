@@ -5,7 +5,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaCheck } from "react-icons/fa6";
-import { getAllOotd } from "@/utils/test";
+// import { getAllOotd } from "@/utils/test";
 import { useQuery } from "@tanstack/react-query";
 import { editInfo, getMyInfo } from "@/components/mypage/api";
 

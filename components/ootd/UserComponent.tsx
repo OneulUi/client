@@ -32,6 +32,9 @@ export default function UserComponent({ data }: any) {
       <div className="border rounded-3xl h-full overflow-hidden">
         {/* 이미지 로딩 */}
         <Image
+          loader={() =>
+            `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${data.ootdImages[0].fileName}`
+          }
           src={`${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${data.ootdImages[0].fileName}`}
           className="w-full h-full  rounded-3xl"
           width={500}

@@ -14,6 +14,9 @@ export default function SearchComponent({ data }: any) {
     <div className="relative border-2">
       {data ? (
         <Image
+          loader={() =>
+            `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${data?.ootdImages[0].fileName}`
+          }
           src={`${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${data?.ootdImages[0].fileName}`}
           className="w-full h-[170px] object-cover"
           width={500}

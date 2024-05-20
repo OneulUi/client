@@ -76,6 +76,9 @@ export default function PostPage() {
         <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-700 "></div>
         {/* <HeaderPost /> */}
         <Image
+          loader={() =>
+            `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${ootdData?.ootdImages[0].fileName}`
+          }
           src={`${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${ootdData?.ootdImages[0].fileName}`}
           className="h-[100vh]"
           width={500}
