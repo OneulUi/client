@@ -14,6 +14,10 @@ export default function Savedootd() {
   const handleClick = (id: number) => {
     router.push(`/ootd/${id}`);
   };
+  const backgroundImageUrl = (image: string) =>
+    `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${image}`;
+
+  const encodedFileName = (url: string) => encodeURIComponent(url);
   return (
     <div className="mb-20 w-full">
       <div className="mt-12 flex justify-between items-center px-3">
@@ -26,10 +30,17 @@ export default function Savedootd() {
       <div className="mt-5 mb-3 px-3 text-xs">전체 {data.length}개</div>
       {data.length !== 0 ? (
         <div className="grid grid-cols-2 gap-[0.4rem] mb-10">
-          {data.map((ootd, index) => (
+          {data.map((ootd: any, index) => (
             <div
               key={index}
               className="relative h-60 w-48 bg-gray-500 p-2"
+              style={{
+                backgroundImage: `url('${backgroundImageUrl(
+                  encodedFileName(ootd.ootdImages[0].fileName)
+                )}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
               //@ts-ignore
               onClick={() => handleClick(ootd.ootdId)}
             >
@@ -37,10 +48,10 @@ export default function Savedootd() {
                 <FiBookmark />
               </span>
               <span className="text-xs absolute bottom-9 text-white">
-                2024.04.02
+              {ootd.issueDate.split("-").join(".")}
               </span>
               <span className="absolute bottom-2 text-white text-2xl">
-                20
+              {ootd.temperature}
                 <span className="text-xs absolute top-1">°C</span>
               </span>
             </div>

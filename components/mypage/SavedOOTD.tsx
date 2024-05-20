@@ -85,7 +85,7 @@ const temp = [
 ];
 
 export default function SavedOOTD() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["savedOotd"],
     queryFn: getSavedOotd,
   });
@@ -96,13 +96,26 @@ export default function SavedOOTD() {
     router.push(`/ootd/${id}`);
   };
 
+  const backgroundImageUrl = (image: string) =>
+    `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${image}`;
+
+  const encodedFileName = (url: string) => encodeURIComponent(url);
+
+  // console.log("data", data);
+  // console.log("savedOotd", savedOotd);
+
   useEffect(() => {
     if (data) {
       setSavedOotd(data);
     }
   }, [data, setSavedOotd]);
 
-  //console.log(data);
+  if (isError || !data || !data.data) {
+    // alert("로그인이 필요합니다.");
+    // window.location.href = "/signin";
+    return <div>Error loading data</div>;
+  }
+
   if (isLoading) <div>loading...</div>;
 
   return (
@@ -115,6 +128,13 @@ export default function SavedOOTD() {
           <div
             key={ootd.ootdId}
             className="w-full h-40 rounded-xl bg-gray-500 relative p-2 flex-shrink-0"
+            style={{
+              backgroundImage: `url('${backgroundImageUrl(
+                encodedFileName(ootd.ootdImages[0].fileName)
+              )}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
             onClick={() => handleClick(ootd.ootdId)}
           >
             <span className="text-white absolute">{ootd.member.name}</span>

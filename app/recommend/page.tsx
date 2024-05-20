@@ -13,6 +13,7 @@ import { getDate } from "@/utils/getDate";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { wordingRecommend } from "./../../utils/wordingByWeather";
+import Combination from "@/components/recommend/Combination";
 
 export default function Recommend() {
   const { data, isPending, isError, refetch } = useQuery({
@@ -24,9 +25,9 @@ export default function Recommend() {
     return <div>Loading...</div>;
   }
 
-  if (isError) {
-    return <div>Error</div>;
-  }
+  // if (isError) {
+  //   return <div>Error</div>;
+  // }
 
   console.log(data);
 
@@ -40,26 +41,6 @@ export default function Recommend() {
     else if (newIndex < 12 && newIndex >= 9) return <Sixth />;
     else if (newIndex < 9 && newIndex >= 4) return <Seventh />;
     else if (newIndex < 4) return <Eighth />;
-    // switch (index) {
-    //   case (newIndex>28):
-    //     return <First />;
-    //   case "second":
-    //     return <Second />;
-    //   case "third":
-    //     return <Third />;
-    //   case "fourth":
-    //     return <Fourth />;
-    //   case "fifth":
-    //     return <Fifth />;
-    //   case "sixth":
-    //     return <Sixth />;
-    //   case "seventh":
-    //     return <Seventh />;
-    //   case "eighth":
-    //     return <Eighth />;
-    //   default:
-    //     break;
-    //}
   };
 
   return (
@@ -97,9 +78,7 @@ export default function Recommend() {
           <span className="font-bold">추천하는 조합</span>
           <Link href="/ootd">더보기 &rarr;</Link>
         </div>
-        <div className="border-solid border-2 border-gray-400 h-[200px] mt-2">
-          추천 옷자리 이미지 슬라이드
-        </div>
+        <Combination />
       </div>
     </div>
   );

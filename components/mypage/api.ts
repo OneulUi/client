@@ -5,7 +5,7 @@ const getAccessToken = () => {
 };
 
 export async function getLikedOotd() {
-  const response = await axios.get("http://13.124.159.141:8080/ootds/likes", {
+  const response = await axios.get("https://www.one-ul.com:8080/ootds/likes", {
     headers: {
       Authorization: getAccessToken(),
     },
@@ -15,7 +15,7 @@ export async function getLikedOotd() {
 
 export async function getSavedOotd() {
   const response = await axios.get(
-    "http://13.124.159.141:8080/ootds/bookmarks",
+    "https://www.one-ul.com:8080/ootds/bookmarks",
     {
       headers: {
         Authorization: getAccessToken(),
@@ -26,7 +26,7 @@ export async function getSavedOotd() {
 }
 
 export async function getMyOotd() {
-  const response = await axios.get("http://13.124.159.141:8080/ootds/me", {
+  const response = await axios.get("https://www.one-ul.com:8080/ootds/me", {
     headers: {
       Authorization: getAccessToken(),
     },
@@ -40,7 +40,7 @@ interface InfoProps {
 }
 
 export async function editInfo(data: InfoProps) {
-  const response = await axios.put("http://13.124.159.141:8080/member", data, {
+  const response = await axios.put("https://www.one-ul.com:8080/member", data, {
     headers: {
       Authorization: getAccessToken(),
     },
@@ -49,7 +49,16 @@ export async function editInfo(data: InfoProps) {
 }
 
 export async function getMyInfo() {
-  const response = await axios.get("http://13.124.159.141:8080/member", {
+  const response = await axios.get("https://www.one-ul.com:8080/member", {
+    headers: {
+      Authorization: getAccessToken(),
+    },
+  });
+  return response.data;
+}
+
+export async function getAllOotd() {
+  const response = await axios.get("https://www.one-ul.com:8080/ootds", {
     headers: {
       Authorization: getAccessToken(),
     },

@@ -22,6 +22,12 @@ const nextConfig = {
         port: "8080",
         pathname: "/ootds/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

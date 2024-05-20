@@ -31,6 +31,11 @@ export default function WeatherByHour({ date }: ChildProps) {
   // if (isError) return <div>Error</div>;
   console.log("d:", data);
   if (isPending) return <div>Loading...</div>;
+
+  if (isError || !data || !data.data) {
+    return <div>Error loading data</div>;
+  }
+
   const newData = chunkArray(data.data, 4);
   // console.log(newData);
 
