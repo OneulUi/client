@@ -25,9 +25,9 @@ export default function Recommend() {
     return <div>Loading...</div>;
   }
 
-  // if (isError) {
-  //   return <div>Error</div>;
-  // }
+  if (isError) {
+    return <div className="mt-40">날씨 정보를 받아올 수 없습니다.</div>;
+  }
 
   console.log(data);
 

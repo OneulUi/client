@@ -40,7 +40,7 @@ export default function MyProfile() {
           src={data.data.picture}
           width={100}
           height={100}
-          alt="Description of the image"
+          alt="Image"
         />
         <span className="mt-10 text-xl">{data.data.name}</span>
         <span className="text-sm">{data.data.introduction}</span>
