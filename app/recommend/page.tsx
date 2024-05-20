@@ -24,9 +24,9 @@ export default function Recommend() {
     return <div>Loading...</div>;
   }
 
-  if (isError) {
-    return <div>Error</div>;
-  }
+  // if (isError) {
+  //   return <div>Error</div>;
+  // }
 
   console.log(data);
 
@@ -40,26 +40,6 @@ export default function Recommend() {
     else if (newIndex < 12 && newIndex >= 9) return <Sixth />;
     else if (newIndex < 9 && newIndex >= 4) return <Seventh />;
     else if (newIndex < 4) return <Eighth />;
-    // switch (index) {
-    //   case (newIndex>28):
-    //     return <First />;
-    //   case "second":
-    //     return <Second />;
-    //   case "third":
-    //     return <Third />;
-    //   case "fourth":
-    //     return <Fourth />;
-    //   case "fifth":
-    //     return <Fifth />;
-    //   case "sixth":
-    //     return <Sixth />;
-    //   case "seventh":
-    //     return <Seventh />;
-    //   case "eighth":
-    //     return <Eighth />;
-    //   default:
-    //     break;
-    //}
   };
 
   return (

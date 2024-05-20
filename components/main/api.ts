@@ -1,10 +1,9 @@
-//api.ts
 import { getDate } from "@/utils/getDate";
 import axios from "axios";
 
 export async function getCurrentWeather(date: string) {
   const response = await axios.get(
-    "http://13.124.159.141:8080/weather/current",
+    "https://www.one-ul.com:8080/weather/current",
     {
       params: {
         baseDate: date,
@@ -17,7 +16,7 @@ export async function getCurrentWeather(date: string) {
 
 export async function getHourWeather(date: string) {
   const response = await axios.get(
-    "http://13.124.159.141:8080/weather/hourly",
+    "https://www.one-ul.com:8080/weather/hourly",
     {
       params: {
         baseDate: date,

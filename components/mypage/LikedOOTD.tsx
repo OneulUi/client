@@ -84,7 +84,7 @@ const temp = [
 ];
 
 export default function LikedOOTD() {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["likedOotd"],
     queryFn: getLikedOotd,
   });
@@ -95,13 +95,23 @@ export default function LikedOOTD() {
     router.push(`/ootd/${id}`);
   };
 
+  const backgroundImageUrl = (image: string) =>
+    `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${image}`;
+
+  const encodedFileName = (url: string) => encodeURIComponent(url);
+
   useEffect(() => {
     if (data) {
       setLikedOotd(data);
     }
   }, [data, setLikedOotd]);
 
-  //console.log(data);
+  if (isError || !data || !data.data) {
+    // alert("로그인이 필요합니다.");
+    // window.location.href = "/signin";
+    return <div>Error loading data</div>;
+  }
+
   if (isLoading) <div>loading...</div>;
 
   return (
@@ -117,6 +127,13 @@ export default function LikedOOTD() {
           <div
             key={ootd.ootdId}
             className="w-36 h-40 rounded-xl bg-gray-500 relative p-2 flex-shrink-0"
+            style={{
+              backgroundImage: `url('${backgroundImageUrl(
+                encodedFileName(ootd.ootdImages[0].fileName)
+              )}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
             onClick={() => handleClick(ootd.ootdId)}
           >
             <span className="text-xs absolute right-2 text-white">

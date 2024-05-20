@@ -13,6 +13,12 @@ export default function Myootd() {
   const handleClick = (id: number) => {
     router.push(`/ootd/${id}`);
   };
+  const backgroundImageUrl = (image: string) =>
+    `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${image}`;
+
+  const encodedFileName = (url: string) => encodeURIComponent(url);
+
+  console.log(data);
 
   return (
     <div className="w-full">
@@ -26,19 +32,25 @@ export default function Myootd() {
       <div className="mt-5 mb-3 px-3 text-xs">전체 {data.length}개</div>
       {data.length !== 0 ? (
         <div className="grid grid-cols-3 gap-1 mb-10">
-          {data.map((ootd, index) => (
+          {data.map((ootd: any, index) => (
             <div
               key={index}
               className="relative h-40 w-32 bg-gray-500 p-2"
+              style={{
+                backgroundImage: `url('${backgroundImageUrl(
+                  encodedFileName(ootd.ootdImages[0].fileName)
+                )}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
               //@ts-ignore
               onClick={() => handleClick(ootd.ootdId)}
             >
               <span className="absolute right-2 text-xs text-white">
-                {" "}
-                2024.04.02{" "}
+                {" "}              {ootd.issueDate.split("-").join(".")}
               </span>
               <span className="absolute bottom-2 text-2xl text-white">
-                20
+                {ootd.temperature}
                 <span className="absolute top-1 text-xs">°C</span>
               </span>
             </div>
