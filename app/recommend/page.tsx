@@ -13,6 +13,7 @@ import { getDate } from "@/utils/getDate";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { wordingRecommend } from "./../../utils/wordingByWeather";
+import Combination from "@/components/recommend/Combination";
 
 export default function Recommend() {
   const { data, isPending, isError, refetch } = useQuery({
@@ -77,9 +78,7 @@ export default function Recommend() {
           <span className="font-bold">추천하는 조합</span>
           <Link href="/ootd">더보기 &rarr;</Link>
         </div>
-        <div className="border-solid border-2 border-gray-400 h-[200px] mt-2">
-          추천 옷자리 이미지 슬라이드
-        </div>
+        <Combination />
       </div>
     </div>
   );

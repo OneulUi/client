@@ -56,3 +56,12 @@ export async function getMyInfo() {
   });
   return response.data;
 }
+
+export async function getAllOotd() {
+  const response = await axios.get("https://www.one-ul.com:8080/ootds", {
+    headers: {
+      Authorization: getAccessToken(),
+    },
+  });
+  return response.data;
+}
