@@ -32,8 +32,6 @@ export default function MyOOTD() {
   }, [data, setMyOotd]);
 
   if (isError || !data || !data.data) {
-    // alert("로그인이 필요합니다.");
-    // window.location.href = "/signin";
     return <div>Error loading data</div>;
   }
 
