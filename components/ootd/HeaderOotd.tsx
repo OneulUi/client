@@ -6,6 +6,7 @@ import Link from "next/link";
 export default function OotdHeader() {
   const alertMessage = () => {
     alert("온도에 따른 검색은 검색창을 이용해주세요.");
+    console.log("alert");
   };
 
   return (
