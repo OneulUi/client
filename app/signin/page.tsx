@@ -11,13 +11,6 @@ export default function SignIn() {
   const router = useRouter();
 
   const handleButtonClick = async () => {
-    // const response = await axios.get(
-    //   "http://3.36.88.73:8080/oauth2/authorization/google?http://localhost:3000/signin/login/redirect"
-    // );
-    // const response = await axios.get(
-    //   "http://ec2-3-36-88-73.ap-northeast-2.compute.amazonaws.com:8080/oauth2/authorization/google?http://localhost:3000/login/redirect"
-    // );
-    // console.log(response);
     router.push(
       "https://www.one-ul.com:8080/oauth2/authorization/google?redirect_uri=https://vercel-public-five.vercel.app/login/redirect"
     );
@@ -27,42 +20,44 @@ export default function SignIn() {
     router.push("/main");
   };
   return (
-    <div className="w-full flex flex-col items-center justify-center overflow-hidden">
-      <Image
-        src={bgImg}
-        width={500}
-        height={undefined}
-        className="absolute h-[100vh] top-0"
-        alt="bgColor"
-      />
-      <Image
-        src={oneului}
-        width={500}
-        height={undefined}
-        className="absolute top-52 w-[240px] h-[170px] "
-        alt="bgColor"
-      />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-        <span className="text-white text-[20px] font-thin">
-          오늘 날씨에 맞는 옷차림을 보고 싶은
-        </span>
-        <br />
-        <span className="text-white text-[20px] font-thin">
-          사람들을 위한 서비스, 오늘의
-        </span>
+    <div className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+      <div className="relative w-full h-full">
+        <Image
+          src={bgImg}
+          layout="fill"
+          objectFit="cover"
+          className="z-0"
+          alt="Background Image"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+          <Image
+            src={oneului}
+            width={240}
+            height={170}
+            alt="Logo"
+            className="mb-8"
+          />
+          <div className="text-center mb-16">
+            <span className="text-white text-[20px] font-thin block">
+              오늘 날씨에 맞는 옷차림을 보고 싶은
+            </span>
+            <span className="text-white text-[20px] font-thin block">
+              사람들을 위한 서비스, 오늘의
+            </span>
+          </div>
+        </div>
       </div>
 
-      {/* <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-600"></div> */}
-      <div className="flex-col absolute inset-x-0 bottom-20 flex  items-center space-y-4">
+      <div className="flex flex-col items-center space-y-4 z-20 mb-20">
         <button
           onClick={handleMain}
-          className=" text-[17px] font-middle bottom-40 bg-[#6595FF] text-white w-[45vh] h-[7vh] flex items-center justify-center rounded-[50px] transition-transform hover:scale-95"
+          className="text-[17px] font-medium bg-[#6595FF] text-white w-[45vh] h-[7vh] flex items-center justify-center rounded-[50px] transition-transform hover:scale-95"
         >
           바로 시작하기
         </button>
         <button
           onClick={handleButtonClick}
-          className=" text-[17px] font-middle bottom-40 bg-[#ccc] text-black w-[45vh] h-[7vh] flex items-center justify-center rounded-[50px] transition-transform hover:scale-95"
+          className="text-[17px] font-medium bg-[#ccc] text-black w-[45vh] h-[7vh] flex items-center justify-center rounded-[50px] transition-transform hover:scale-95"
         >
           구글 로그인
         </button>
