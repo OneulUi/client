@@ -24,6 +24,7 @@ export default function SignIn() {
   };
 
   const handleMain = () => {
+    localStorage.setItem("weather", "서울특별시 강남구");
     router.push("/main");
   };
   return (
