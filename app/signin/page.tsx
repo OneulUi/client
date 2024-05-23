@@ -21,6 +21,7 @@ export default function SignIn() {
   };
   return (
     <div className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* 아래의 div가 btn위까지 영역 잡아줌 */}
       <div className="relative w-full h-full">
         <Image
           src={bgImg}
