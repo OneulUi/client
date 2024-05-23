@@ -2,6 +2,7 @@ import { IoSunnyOutline } from "react-icons/io5";
 
 //@ts-ignore
 export default function Card({ time, value, weather, index }) {
+  console.log(time, value, weather, index);
   return (
     <div
       className={

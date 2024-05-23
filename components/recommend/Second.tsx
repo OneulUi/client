@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Second() {
   return (
     <div className="ml-5 my-10">
@@ -20,8 +22,8 @@ export default function Second() {
           반바지
         </div>
       </div>
-      <div className="w-[200px] h-[200px] border-black border-2 border-solid">
-        이미지
+      <div className="w-[200px] h-[200px]">
+        <Image src="/assets/반팔.png" alt="옷" width={200} height={200} />
       </div>
     </div>
   );

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Fourth() {
   return (
     <div className="ml-5 my-10">
@@ -28,8 +30,8 @@ export default function Fourth() {
         </div>
       </div>
 
-      <div className="w-[200px] h-[200px] border-black border-2 border-solid">
-        이미지
+      <div className="w-[200px] h-[200px]">
+        <Image src="/assets/바람막이.png" alt="옷" width={200} height={200} />
       </div>
     </div>
   );

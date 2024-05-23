@@ -6,7 +6,7 @@ import { getAllOotd } from "../mypage/api";
 import Image from "next/image";
 
 export default function Combination() {
-  const { data, isError } = useQuery({
+  const { data, isError, isLoading } = useQuery({
     queryKey: ["allOotd"],
     queryFn: getAllOotd,
   });
@@ -21,13 +21,17 @@ export default function Combination() {
 
   const encodedFileName = (url: string) => encodeURIComponent(url);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   if (isError) {
     return <div className="mt-10">로그인이 필요한 서비스입니다..</div>;
   }
 
   return (
     <div className="flex gap-2 items-center overflow-x-scroll scrollbar-hide mt-2">
-      {data.map((ootd: any) => (
+      {data.data.map((ootd: any) => (
         <div
           key={ootd.ootdId}
           className="w-52 h-60 rounded-xl bg-gray-500 relative p-2 flex-shrink-0"
