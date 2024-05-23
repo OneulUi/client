@@ -11,6 +11,10 @@ export default function MyProfile() {
     queryFn: getMyInfo,
   });
   console.log(data);
+  if (!localStorage.getItem("accessToken")) {
+    alert("login");
+    window.location.href = "/signin";
+  }
   if (isLoading) {
     return <div>Loading...</div>;
   }

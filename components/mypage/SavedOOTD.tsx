@@ -39,7 +39,7 @@ export default function SavedOOTD() {
   if (isLoading) <div>loading...</div>;
 
   return (
-    <div className="px-5">
+    <div className="px-5 min-h-12">
       <div className="flex justify-between mt-7 mb-2">
         <span className="font-bold">저장한 OOTD</span>
       </div>
