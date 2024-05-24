@@ -5,17 +5,24 @@ import { MdPerson } from "react-icons/md";
 import sun from "@/assets/woman.png";
 export default function UserComponent({ data }: any) {
   return (
-    <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[500px] bg-gray-100">
+    <section className="flex flex-col justify-between rounded-2xl p-6 w-5/6 mt-4 h-[500px] bg-gray-100">
       <div className="flex justify-between items-center h-1/5">
         <span className="font-thin flex items-center">
           <p className="mr-2">
-            <MdPerson />
+            <Image
+              loader={() => data?.member.picture}
+              width={500}
+              height={500}
+              src={data?.member.picture}
+              alt="Profile"
+              className="mr-2 w-10 h-10 rounded-full"
+            />
           </p>
           <p>{data?.member.email}</p>
         </span>
 
         <div className="flex items-center relative">
-          <span className="text-[38px] mr-6 font-bold">
+          <span className="text-[38px] mr-8 font-bold">
             {data?.temperature}
             <span className="text-sm font-thin absolute top-0 left-10">{`\u00b0C`}</span>
           </span>

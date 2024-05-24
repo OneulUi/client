@@ -12,10 +12,11 @@ export default function SignIn() {
 
   const handleButtonClick = async () => {
     router.push(
-      "https://www.one-ul.com:8080/oauth2/authorization/google?redirect_uri=https://vercel-public-five.vercel.app/login/redirect"
+      "https://www.one-ul.com:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/login/redirect"
     );
   };
-
+  // http://localhost:3000/
+  // https://vercel-public-five.vercel.app/
   const handleMain = () => {
     localStorage.setItem("weather", "서울특별시 강남구");
     router.push("/main");

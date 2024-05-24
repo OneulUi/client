@@ -16,7 +16,7 @@ export default function UserComponent2() {
   return (
     <>
       {" "}
-      <section className="flex flex-col justify-between rounded-2xl p-4 w-5/6 mt-4 h-[400px] bg-gray-100">
+      <section className="flex flex-col justify-between rounded-2xl p-6 w-5/6 mt-4 h-[400px] bg-gray-100">
         <div className="flex justify-between items-center h-1/5">
           <span className="font-thin flex items-center">
             <p className="mr-2">
@@ -25,7 +25,7 @@ export default function UserComponent2() {
             <p>Summer</p>
           </span>
           <div className="flex items-center relative">
-            <span className="text-[38px] mr-6 font-bold">
+            <span className="text-[38px] mr-8 font-bold">
               28
               <span className="text-sm font-thin absolute top-0 left-10">{`\u00b0C`}</span>
             </span>
