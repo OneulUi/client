@@ -11,6 +11,7 @@ import { IoIosSearch } from "react-icons/io";
 import { useRouter } from "next/navigation";
 export default function Ootd() {
   const [ootdData, setOotdData] = useState<OotdData[]>([]);
+  const [selectedOotd, setSelectedOotd] = useState<OotdData | null>(null);
   const router = useRouter();
   const handleRouter = () => {
     router.push("/ootd/search");
@@ -22,6 +23,7 @@ export default function Ootd() {
           params: { temperature: 20, humidity: 20 },
         });
         setOotdData(res.data.data);
+
         console.log(res.data.data);
       } catch (error) {
         console.error("Error fetching ootd data:", error);
@@ -31,6 +33,16 @@ export default function Ootd() {
     fetchData();
   }, []);
 
+  const handleOotdClick = async (ootdId: string) => {
+    try {
+      const res = await Axios.get(`/ootds/${ootdId}`);
+      setSelectedOotd(res.data.data);
+      console.log(res.data.data);
+    } catch (error) {
+      console.error("Error fetching detailed ootd data:", error);
+    }
+    router.push(`/detail/${ootdId}`);
+  };
   return (
     <main className="w-full flex flex-col items-center">
       <HeaderOotd />
@@ -47,17 +59,25 @@ export default function Ootd() {
         />
       </div>
       <section className=" w-full flex flex-col items-center bg-gradient-to-tr from-pink-300 to-blue-200  pb-[120px]">
-        <UserComponent3 />
-        <UserComponent2 />
         {ootdData.length > 1 ? (
           ootdData.map((data) => (
-            <UserComponent key={data.ootdId} data={data} />
+            <UserComponent
+              key={data.ootdId}
+              data={data}
+              onClick={handleOotdClick}
+            />
           ))
         ) : ootdData.length === 1 ? (
-          <UserComponent key={ootdData[0].ootdId} data={ootdData[0]} />
+          <UserComponent
+            key={ootdData[0].ootdId}
+            data={ootdData[0]}
+            onClick={handleOotdClick}
+          />
         ) : (
           <div>해당 날씨의 데이터가 없습니다.</div>
         )}
+        <UserComponent3 />
+        <UserComponent2 />
       </section>
     </main>
   );

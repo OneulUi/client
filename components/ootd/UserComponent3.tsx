@@ -16,7 +16,7 @@ export default function UserComponent3() {
   return (
     <>
       {" "}
-      <section className="flex flex-col justify-between rounded-2xl p-6 w-5/6 mt-4 h-[400px] bg-[rgba(251,251,251)]">
+      <section className="flex flex-col justify-between rounded-2xl p-6 w-5/6 mt-4 h-[400px] bg-gray-100">
         <div className="flex justify-between items-center h-1/5">
           <span className="font-thin flex items-center">
             <p className="mr-2">
