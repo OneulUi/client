@@ -1,3 +1,4 @@
+"use client";
 import { getDate } from "@/utils/getDate";
 import axios from "axios";
 
