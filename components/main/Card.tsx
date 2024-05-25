@@ -1,8 +1,19 @@
-import { IoSunnyOutline } from "react-icons/io5";
+import { IoCloudyOutline, IoSunnyOutline } from "react-icons/io5";
+import { TiWeatherDownpour, TiWeatherPartlySunny } from "react-icons/ti";
 
 //@ts-ignore
-export default function Card({ time, value, weather, index }) {
-  console.log(time, value, weather, index);
+export default function Card({ time, value, weather, index, rainy }) {
+  const getIcon = (weather: any, rainy: string) => {
+    if (rainy !== "0") return <TiWeatherDownpour className="w-10 h-10" />;
+    else {
+      if (weather.fcstValue === "1")
+        return <IoSunnyOutline className="w-10 h-10" />;
+      else if (weather.fcstValue === "3")
+        return <TiWeatherPartlySunny className="w-10 h-10" />;
+      else return <IoCloudyOutline className="w-10 h-10" />;
+    }
+  };
+  console.log(time, value, weather, index, rainy);
   return (
     <div
       className={
@@ -14,8 +25,7 @@ export default function Card({ time, value, weather, index }) {
       <div>
         {time.slice(0, 2)}:{time.slice(2, 4)}
       </div>
-      {/* weather에 따라 ICON */}
-      <IoSunnyOutline className="w-10 h-10" />
+      {getIcon(weather, rainy)}
       <div>{value}°C</div>
     </div>
   );

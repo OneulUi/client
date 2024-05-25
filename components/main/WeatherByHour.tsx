@@ -151,6 +151,7 @@ export default function WeatherByHour({ date }: ChildProps) {
                 time={item[0].fcstTime}
                 value={item[0].fcstValue}
                 weather={item[1].fcstValue}
+                rainy={item[2].fcstValue}
               />
             ))}
         </div>
