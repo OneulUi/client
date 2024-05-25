@@ -12,7 +12,7 @@ export default function SignIn() {
 
   const handleButtonClick = async () => {
     router.push(
-      "https://www.one-ul.com:8080/oauth2/authorization/google?redirect_uri=https://vercel-public-five.vercel.app/login/redirect"
+      "https://www.one-ul.com:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/login/redirect"
     );
   };
   // http://localhost:3000/
