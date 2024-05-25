@@ -1,3 +1,4 @@
+"use client";
 import LikedOOTD from "@/components/mypage/LikedOOTD";
 import MyProfile from "@/components/mypage/MyProfile";
 import MyOOTD from "@/components/mypage/MyOOTD";
