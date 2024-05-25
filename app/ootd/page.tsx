@@ -41,7 +41,7 @@ export default function Ootd() {
     } catch (error) {
       console.error("Error fetching detailed ootd data:", error);
     }
-    router.push(`/detail/${ootdId}`);
+    router.push(`/ootd/${ootdId}`);
   };
   return (
     <main className="w-full flex flex-col items-center">
