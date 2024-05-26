@@ -17,6 +17,7 @@ export interface SurveyIdType {
 
 export interface OotdData {
   ootdId: number;
+  issueDate: string;
   review: string;
   temperature: string;
   humidity: string;
@@ -26,6 +27,7 @@ export interface OotdData {
     memberId: number;
     email: string;
     name: string;
+    picture: string;
     introduction: string | null;
     survey: {
       surveyId: number;

@@ -52,6 +52,7 @@ export default function PostPage() {
   return (
     <main className="relative">
       <div className="flex flex-col items-center justify-center overflow-hidden">
+        {/* <div className="mt-20"></div> */}
         <div className="absolute top-5 left-0">
           {" "}
           <Link href="/ootd" className="absolute left-4">
@@ -79,8 +80,9 @@ export default function PostPage() {
           )}
         </div>
 
-        <div className="absolute bottom-0 w-[500Px] 3xl:w-full h-1/3 bg-gradient-to-t from-gray-700 "></div>
+        <div className="absolute bottom-0 w-[500px] 3xl:w-full h-2/3 bg-gradient-to-t from-orange-200 "></div>
         {/* <HeaderPost /> */}
+
         <Image
           loader={() =>
             `${process.env.NEXT_PUBLIC_IP_API_KEY}/ootds/images/${ootdData?.ootdImages[0].fileName}`
@@ -93,29 +95,36 @@ export default function PostPage() {
           priority
         />
         <div className="absolute bottom-40 right-10 display flex justify-center items-center">
-          <h5 className="text-[35px] font-middle flex text-[rgba(251,251,251)] mr-2 mt-8">
+          <h5 className="text-[35px] font-middle flex text-gray-700 mr-2 mt-8">
             {ootdData?.humidity}
             <p className="text-[17px]">%</p>
           </h5>
 
-          <h1 className="text-[80px] flex font-middle text-[rgba(251,251,251)] ml-2">
+          <h1 className="text-[80px] flex font-middle text-gray-700 ml-2">
             {ootdData?.temperature}
             <p className="text-[33px]">°C</p>
           </h1>
         </div>
         <div className="absolute bottom-40 left-6 flex">
-          <FaUserCircle size={26} className="text-[rgba(251,251,251)] mr-2" />
-          <p className="text-lg font-thin text-[rgba(251,251,251)]">
+          {/* <FaUserCircle size={26} className="text-gray-700 mr-2" /> */}
+          <Image
+            width={40}
+            height={40}
+            src={ootdData?.member.picture || "/default-profile.png"}
+            alt="Profile"
+            className="w-10 h-10 rounded-full mr-2"
+          />
+          <p className="text-lg font-thin text-gray-700">
             {ootdData?.member.name}
           </p>
         </div>
-        <div className="absolute bottom-28 left-6 flex text-[rgba(251,251,251)]">
-          {dateNow}
+        <div className=" bottom-28 left-6 flex text-gray-700">
+          {ootdData?.issueDate}
         </div>
-        <div className="absolute bottom-20 font-thin left-6 flex text-[rgba(251,251,251)]">
+        <div className="absolute bottom-20 font-thin left-3 flex text-gray-700">
           {ootdData?.review}
         </div>
-        <div className="absolute bottom-10 font-thin right-6 flex text-[rgba(251,251,251)]">
+        <div className="absolute bottom-10 font-thin right-6 flex text-gray-700">
           {ootdData?.satisfaction === "Y" ? (
             <button className="flex items-center text-xl p-3 w-full rounded-3xl mr-0.5 bg-gray-400 opacity-80">
               <CiFaceSmile className="mr-2" size={26} />
