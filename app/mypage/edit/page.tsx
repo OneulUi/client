@@ -2,7 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FaChevronLeft } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { FaCheck } from "react-icons/fa6";
 // import { getAllOotd } from "@/utils/test";
@@ -28,6 +29,15 @@ export default function Edit() {
   });
   console.log(data);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedColor = localStorage.getItem("color");
+      if (savedColor) {
+        setColor(savedColor);
+      }
+    }
+  }, []);
+
   if (isPending) return <div>Loading...</div>;
 
   if (isError || !data || !data.data) {
@@ -42,7 +52,10 @@ export default function Edit() {
 
   const handleClick = (str: string) => {
     setColor(str);
-    localStorage.setItem("color", str);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("color", str);
+    }
+    // localStorage.setItem("color", str);
   };
 
   const onSubmit = (data: any) => {
@@ -50,6 +63,15 @@ export default function Edit() {
     editInfo(data);
     window.location.href = "/mypage";
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedColor = localStorage.getItem("color");
+      if (savedColor) {
+        setColor(savedColor);
+      }
+    }
+  }, []);
 
   return (
     <div className="w-full">
