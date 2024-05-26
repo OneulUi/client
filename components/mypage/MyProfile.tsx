@@ -11,7 +11,7 @@ export default function MyProfile() {
     queryFn: getMyInfo,
   });
   console.log(data);
-  if (!localStorage.getItem("accessToken")) {
+  if (typeof window !== "undefined" && !localStorage.getItem("accessToken")) {
     alert("login");
     window.location.href = "/signin";
   }
@@ -19,16 +19,19 @@ export default function MyProfile() {
     return <div>Loading...</div>;
   }
   if (isError || !data || !data.data) {
-    alert("로그인이 필요합니다.");
+    if (typeof window !== "undefined") {
+      alert("로그인이 필요합니다.");
+      window.location.href = "/signin";
+    }
     window.location.href = "/signin";
     return <div>Error loading data</div>;
   }
   return (
     <>
       <div
-        className={`h-[15vh] bg-[${localStorage.getItem(
-          "color"
-        )}] w-full p-3 relative`}
+        className={`h-[15vh] bg-[${
+          typeof window !== "undefined" ? localStorage.getItem("color") : "#fff"
+        }] w-full p-3 relative`}
       >
         <div className="w-10 h-10 absolute bottom-1 right-0">
           <div className="bg-white rounded-full w-7 h-7 p-2 flex items-center justify-center">
